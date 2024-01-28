@@ -14,4 +14,9 @@ class Role extends Model
     {
         return $this->belongsToMany(Contact::class);
     }
+
+    public function permisssions(): BelongsToMany
+    {
+        return $this->belongsToMany(Permission::class);
+    }
 }
