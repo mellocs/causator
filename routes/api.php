@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/test', function (){
         return 'test';
     });
+
+    Route::get('/roles', [ContactController::class, 'getUserPermissions']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Permission;
+use App\Models\Property;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
 
@@ -22,7 +24,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             RoleSeeder::class,
-            GroupSeeder::class
+            GroupSeeder::class,
+            PropertySeeder::class,
+            PermissionSeeder::class
         ]);
     }
 }

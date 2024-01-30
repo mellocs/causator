@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -61,5 +62,18 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         //
+    }
+
+    public function getUserPermissions()
+    {
+//        $contact = Contact::find(1);
+//        $roles = $contact->roles;
+
+        $role = Role::find(1);
+        $property = $role->properties;
+
+
+
+        return $property;
     }
 }

@@ -6,20 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Role extends Model
+class Property extends Model
 {
     use HasFactory;
 
     protected $fillable = ['name'];
 
-    public function contacts(): BelongsToMany
+    public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Contact::class);
-    }
-
-    public function properties(): BelongsToMany
-    {
-        return $this->belongsToMany(Property::class,
+        return $this->belongsToMany(Role::class,
             'role_property_permissions')->withPivot('permission_id');
     }
 }
