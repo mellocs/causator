@@ -5,16 +5,15 @@ namespace App\Repositories;
 use App\Models\Contact;
 
 
-class ContactRepository implements ContactRepositoryInterface
+class ContactRepository
 {
-
-    public function create(array $contact)
-    {
-        return Contact::create($contact);
-    }
-
     public function getContactByEmail($email)
     {
         return Contact::where('email', $email)->first();
+    }
+
+    public function getAllContacts()
+    {
+        return Contact::with('contactInfo')->get();
     }
 }

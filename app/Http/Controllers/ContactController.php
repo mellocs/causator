@@ -66,14 +66,6 @@ class ContactController extends Controller
 
     public function getUserPermissions()
     {
-//        $contact = Contact::find(1);
-//        $roles = $contact->roles;
-
-        $role = Role::find(1);
-        $property = $role->properties;
-
-
-
-        return $property;
+      //
     }
 }

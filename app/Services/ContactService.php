@@ -17,10 +17,10 @@ class ContactService
 
     public function createContact(array $contact) : Contact
     {
-        return $this->contactRepository->create($contact);
+        return Contact::create($contact);
     }
 
-    public function getContactByEmail($email) : Contact
+    public function getContactByEmail(string $email) : Contact
     {
         return $this->contactRepository->getContactByEmail($email);
     }
