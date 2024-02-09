@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,8 +25,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/test', function (){
         return 'test';
     });
-
-    Route::get('/roles', [ContactController::class, 'getUserPermissions']);
+    Route::get('/contacts', [ContactController::class, 'getAllContacts']);
+    Route::get('/roles', [RoleController::class, 'getAllRoles']);
+    Route::get('/roles/{id}', [RoleController::class, 'getContactsByRole']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -35,4 +35,9 @@ class ContactService
 
         return Hash::check($contactData['password'], $contact->password);
     }
+
+    public function getAllContacts()
+    {
+        return $this->contactRepository->getAllContacts();
+    }
 }

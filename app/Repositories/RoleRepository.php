@@ -14,6 +14,8 @@ class RoleRepository
 
     public function getContactsByRole($roleId)
     {
-        return Contact::where('role_id', $roleId)->get();
+        return Contact::whereHas('roles', function ($query) use ($roleId) {
+            $query->where('role_id', $roleId);
+        })->get();
     }
 }
