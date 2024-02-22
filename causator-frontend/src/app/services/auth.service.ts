@@ -18,13 +18,15 @@ export class AuthService {
     }
 
     signUp(userData: IAuthUser) {
-        return this.http.post(`${API_URL}/user`, userData)
+        return this.http.post(`${API_URL}/api/register`, userData)
         .pipe(
             catchError(err => {
                 throw new Error(err.message)
             })
         )
-        .subscribe();
+        .subscribe(res => {
+            this.router.navigate(['login']);
+        });
     }
 
     login() {
