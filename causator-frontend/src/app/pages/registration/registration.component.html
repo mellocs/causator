@@ -51,12 +51,12 @@
                 Password is required.
               </div>
             }
-            @if (userData.controls['password'].hasError('minlength')) {
+            @else if (userData.controls['password'].hasError('minlength')) {
               <div>
                 Password will contain min 8 symbols.
               </div>
             }
-            @if (userData.controls['password'].hasError('pattern')) {
+            @else if (userData.controls['password'].hasError('pattern')) {
               <div>
                 Password will contain symbols and numbers.
               </div>
@@ -81,11 +81,9 @@
                 Confirm password is required.
               </div>
             }
-            <!-- @if (userData.get('password_confirmation').errors['passwordsNotMatch']) {
-              <div>
+              <div ng-show="userData.confirmation_password.$error.mismatch">
                 Passwords are not equal.
               </div>
-            } -->
           </div>
         }
       </div>

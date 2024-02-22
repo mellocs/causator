@@ -4,24 +4,53 @@
     </div>
   
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6" action="#" method="POST">
+      <form [formGroup]="userData" (ngSubmit)="submitLogin()"  class="space-y-6" action="#" method="POST">
         <div>
           <label for="email" class="block text-sm font-medium leading-6 text-gray-300">Email address</label>
           <div class="mt-2">
-            <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <input formControlName="email" id="email" name="email" type="email" autocomplete="email" placeholder="Email" required
+              class="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
+          @if (userData.controls['email'].invalid && userData.controls['email'].touched) {
+            <div class="text-red-600 text-sm mt-1">
+              @if(userData.controls['email'].hasError('required')) {
+                <div>
+                  Email is required.
+                </div>
+              }
+              @if(userData.controls['email'].hasError('email')) {
+                <div>
+                  Please enter a valid email.
+                </div>
+              }
+            </div>
+          }
         </div>
   
         <div>
           <div class="flex items-center justify-between">
             <label for="password" class="block text-sm font-medium leading-6 text-gray-300">Password</label>
-            <div class="text-sm">
-              <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+          </div>
+          <div class="mt-2 relative h-9">
+            <input formControlName="password" id="password" name="password" [type]="hidePassword ? 'password' : 'text'"
+              autocomplete="current-password" placeholder="Password" required
+              class="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <button (click)="showPassword()" type="button">
+                <svg class="absolute h-9 w-8 inset-y-0 right-0 pr-2 flex items-center cursor-pointer" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="gray" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4 6-9 6s-9-4.8-9-6c0-1.2 4-6 9-6s9 4.8 9 6Z"/>
+                  <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                </svg>
+              </button>
+          </div>
+          @if (userData.controls['password'].invalid && userData.controls['password'].touched) {
+            <div class="text-red-600 text-sm mt-1">
+              @if (userData.controls['password'].hasError('required')) {
+                <div>
+                  Password is required.
+                </div>
+              }
             </div>
-          </div>
-          <div class="mt-2">
-            <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-          </div>
+          }
         </div>
   
         <div>

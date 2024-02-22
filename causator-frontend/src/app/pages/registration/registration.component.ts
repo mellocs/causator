@@ -1,7 +1,7 @@
 import { CommonModule, NgIf } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators, } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { threadId } from 'worker_threads';
 import { LoginComponent } from '../login/login.component';
@@ -46,13 +46,19 @@ export class RegistrationComponent {
       ]),
       password_confirmation: new FormControl('', [
         Validators.required,
-        
+        this.passwordConfirmationValidator.bind(this)
       ])
     }) 
   }
 
+  passwordConfirmationValidator(control: FormControl): { [s: string]: boolean } | null {
+    const passwordControl = this.userData ? this.userData.get('password') : null;
+    if (passwordControl && control.value != passwordControl.value) {
+      return { 'mismatch': true };
+    }
+    return null;
+  }
 
-  
   submitRegistration() {
     if (this.userData.valid && (this.userData.value.password === this.userData.value.password_confirmation)) {
       this.authService.signUp(this.userData.value)

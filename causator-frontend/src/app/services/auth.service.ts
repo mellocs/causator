@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { IAuthUser } from "../types/user.interface";
+import { IAuthUser } from "../interfaces/register.interface";
 import { API_URL } from "../constants/constants";
 import { catchError } from "rxjs";
 
@@ -26,4 +26,8 @@ export class AuthService {
         )
         .subscribe();
     }
-}
+
+    login() {
+        
+    }
+} 
