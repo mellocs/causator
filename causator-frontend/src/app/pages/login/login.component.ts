@@ -42,12 +42,9 @@ export class LoginComponent {
     }) 
   }
 
-
-  
   submitLogin() {
     if (this.userData.valid) {
-      // this.authService.signUp(this.userData.value)
-      console.log(this.userData.value);
+      this.authService.login(this.userData.value)
     } else {
       console.log("invalid user data");
     } 
