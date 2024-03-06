@@ -2,16 +2,16 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-profile',
+  selector: 'app-dashboard',
   standalone: true,
   imports: [
     RouterModule,
     RouterLink,
     RouterLinkActive
   ],
-  templateUrl: './profile.component.html',
-  styleUrl: './profile.component.scss'
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.scss'
 })
-export class ProfileComponent {
+export class DashboardComponent {
 
 }

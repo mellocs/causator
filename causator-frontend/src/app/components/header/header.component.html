@@ -5,9 +5,9 @@
           <span class="text-3xl text-violet-600 font-bold">Causator</span>
         </a>
       </div>
-      <div *ngIf="isAuth; else isNotAuth;" class="lg:flex lg:flex-1 lg:justify-end">
-        <a routerLink="profile" class="text-sm font-bold leading-6 text-gray-900 hover:text-blue-500 p-1 mr-5">Profile</a>
-        <a routerLink="registration" class="bg-red-500 hover:bg-red-700 text-white px-4 rounded transition duration-300 ease-in-out p-1">Log out</a>
+      <div *ngIf="this.authService.isAuthSig(); else isNotAuth;" class="lg:flex lg:flex-1 lg:justify-end">
+        <a routerLink="dashboard" class="text-sm font-bold leading-6 text-gray-900 hover:text-blue-500 p-1 mr-5">Profile</a>
+        <button (click)="logout()" class="bg-red-500 hover:bg-red-700 text-white px-4 rounded transition duration-300 ease-in-out p-1">Log out</button>
       </div>
       <ng-template #isNotAuth>
         <div  class="lg:flex lg:flex-1 lg:justify-end">
