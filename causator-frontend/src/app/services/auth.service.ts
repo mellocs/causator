@@ -33,12 +33,11 @@ export class AuthService {
         .pipe(
             catchError(err => {
                 throw new Error(err.message),   
-                console.log(err.error.message),
-                this.toastr.error(`${err.error.message}`, 'Error')
+                this.toastr.error("Акаунт з такою ел. поштою вже існує!", 'Помилка')
             })
         )
         .subscribe(res => {
-            this.toastr.success('Account created!', 'Success');
+            this.toastr.success('Аккаунт створено!', 'Успіх!');
             this.router.navigate(['login']);
         });
     }
@@ -48,7 +47,7 @@ export class AuthService {
         .pipe(
             catchError(err => {
                 throw new Error(err.message),
-                this.toastr.error('Bad Credentials!', 'Error!');
+                this.toastr.error('Такий користувач не зареєстрований !', 'Помилка!');
             })
             
         )
@@ -63,6 +62,6 @@ export class AuthService {
         localStorage.removeItem('auth_token');
         this.isAuthSig.set(false)
         this.router.navigate(['login']);
-        this.toastr.success('Loggin out')
+        this.toastr.success('Ви вийшли з аккаунту')
     }
 } 
