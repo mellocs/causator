@@ -1,18 +1,18 @@
 <header class="bg-white z-10">
     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
       <div class="flex lg:flex-1">
-        <a href="#" class="-m-1.5 p-1.5">
+        <a routerLink="/" class="-m-1.5 p-1.5">
           <span class="text-3xl text-violet-600 font-bold">Causator</span>
         </a>
       </div>
-      <div *ngIf="isAuth; else isNotAuth;" class="lg:flex lg:flex-1 lg:justify-end">
-        <a routerLink="profile" class="text-sm font-bold leading-6 text-gray-900 hover:text-blue-500 p-1 mr-5">Profile</a>
-        <a routerLink="registration" class="bg-red-500 hover:bg-red-700 text-white px-4 rounded transition duration-300 ease-in-out p-1">Log out</a>
+      <div *ngIf="this.authService.isAuthSig(); else isNotAuth;" class="lg:flex lg:flex-1 lg:justify-end">
+        <a routerLink="dashboard" class="text-sm font-bold leading-6 text-gray-900 hover:text-blue-500 p-1 mr-5">Кабінет</a>
+        <button (click)="logout()" class="bg-red-500 hover:bg-red-700 text-white px-4 rounded transition duration-300 ease-in-out p-1">Вихід</button>
       </div>
       <ng-template #isNotAuth>
         <div  class="lg:flex lg:flex-1 lg:justify-end">
-          <a routerLink="login" class="text-sm font-bold leading-6 text-gray-900 hover:text-blue-500 p-1 mr-5">Log in</a>
-          <a routerLink="registration" class="bg-blue-500 hover:bg-blue-700 text-white px-4 rounded transition duration-300 ease-in-out p-1">Sign up</a>
+          <a routerLink="login" class="text-sm font-bold leading-6 text-gray-900 hover:text-blue-500 p-1 mr-5">Вхід</a>
+          <a routerLink="registration" class="bg-blue-500 hover:bg-blue-700 text-white px-4 rounded transition duration-300 ease-in-out p-1">Реєстрація</a>
         </div>
       </ng-template>
     </nav>

@@ -1,4 +1,4 @@
-export interface IAuthUser {
+export interface ISignupUser {
     email: string
     password: string
     password_confirmation: string
