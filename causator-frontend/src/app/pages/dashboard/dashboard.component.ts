@@ -14,4 +14,17 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 })
 export class DashboardComponent {
 
+  public isOpenProcess:boolean = false;
+  public isOpenProcessItem:boolean = false;
+
+  openProcess() {
+    this.isOpenProcess = !this.isOpenProcess;
+
+  }
+
+  openProcessItem() {
+    this.isOpenProcessItem = !this.isOpenProcessItem;
+
+  }
+
 }
