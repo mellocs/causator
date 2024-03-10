@@ -17,20 +17,20 @@ export const routes: Routes = [
         component: DashboardComponent,
         children: [
             {
-              path: 'contacts', // child route path
-              component: ContactsComponent, // child route component that the router renders
+              path: 'contacts',
+              component: ContactsComponent,
             },
             {
-                path: 'notifications', // child route path
-                component: NotificationsComponent, // child route component that the router renders
+                path: 'notifications',
+                component: NotificationsComponent,
             },
             {
-                path: 'events', // child route path
-                component: EventsComponent, // child route component that the router renders
+                path: 'events',
+                component: EventsComponent,
             },
           ],
         title: 'Dashboard', 
-        // canActivate: [authGuard()]
+        canActivate: [authGuard()]
     },
 
     {path: '**', component: HomeComponent}

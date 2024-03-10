@@ -6,7 +6,6 @@ import { catchError } from "rxjs";
 import { ToastrService } from 'ngx-toastr';
 import { ISignupUser } from "../interfaces/signup.interface";
 import { IAuthUser, IUser } from "../interfaces/auth.interface";
-import { DOCUMENT } from "@angular/common";
 
 @Injectable({
     providedIn: 'root',
@@ -23,8 +22,8 @@ export class AuthService {
         private toastr: ToastrService,
         private readonly router: Router
     ) {
-        // const token = localStorage.getItem('auth_token')
-        // this.isAuthSig.set(!!token)
+        const token = localStorage.getItem('auth_token')
+        this.isAuthSig.set(!!token)
         
     }
 
