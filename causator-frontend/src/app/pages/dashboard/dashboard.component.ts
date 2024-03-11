@@ -24,9 +24,17 @@ export class DashboardComponent {
   public isOpenProcess:boolean = false;
   public isOpenProcessItem:boolean = false;
 
+  public isOpenContacts:boolean;
+  public isOpenContactsGroups:boolean;
+  public isOpenContactsGroupsCustom:boolean;
+  
+
   constructor (private readonly userService: UserService) {
-    
+    this.isOpenContacts = false;
+    this.isOpenContactsGroups = false;
+    this.isOpenContactsGroupsCustom = false;
   }
+
 
   openProcess() {
     this.isOpenProcess = !this.isOpenProcess;
@@ -36,6 +44,18 @@ export class DashboardComponent {
   openProcessItem() {
     this.isOpenProcessItem = !this.isOpenProcessItem;
 
+  }
+
+  openContacts() {
+    this.isOpenContacts = !this.isOpenContacts;
+  }
+
+  openContactsGroups() {
+    this.isOpenContactsGroups = !this.isOpenContactsGroups;
+  }
+
+  openContactsGroupsCustom() {
+    this.isOpenContactsGroupsCustom = !this.isOpenContactsGroupsCustom;
   }
 
 }
