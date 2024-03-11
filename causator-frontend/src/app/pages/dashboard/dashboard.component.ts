@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { ContactsComponent } from '../../components/contacts/contacts.component';
 import { UserService } from '../../services/user.service';
+import { TasksComponent } from '../../components/tasks/tasks.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,8 @@ import { UserService } from '../../services/user.service';
     RouterModule,
     RouterLink,
     RouterLinkActive,
-    ContactsComponent
+    ContactsComponent,
+    TasksComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'

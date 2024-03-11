@@ -7,6 +7,7 @@ import { authGuard } from './guards/auth.guard';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { EventsComponent } from './components/events/events.component';
+import { TasksComponent } from './components/tasks/tasks.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent, title: 'Causator'},
@@ -17,8 +18,8 @@ export const routes: Routes = [
         component: DashboardComponent,
         children: [
             {
-              path: 'contacts',
-              component: ContactsComponent,
+                path: 'contacts',
+                component: ContactsComponent,
             },
             {
                 path: 'notifications',
@@ -28,7 +29,12 @@ export const routes: Routes = [
                 path: 'events',
                 component: EventsComponent,
             },
-          ],
+            {
+                path: 'tasks', 
+                component: TasksComponent, 
+                title: 'Tasks'},
+
+        ],
         title: 'Dashboard', 
         canActivate: [authGuard()]
     },
