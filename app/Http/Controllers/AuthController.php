@@ -18,6 +18,7 @@ class AuthController extends Controller
     {
         $contactData = $request->validate([
             'email' => 'required|string|unique:contacts,email',
+            'alias' => 'required|string|unique:contacts,alias',
             'password' => 'required|string|confirmed'
         ]);
 

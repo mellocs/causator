@@ -22,6 +22,7 @@ class Contact extends Authenticatable
      */
     protected $fillable = [
         'email',
+        'alias',
         'password',
     ];
 

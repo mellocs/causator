@@ -22,10 +22,12 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::get('/test', function (){
-        return 'test';
-    });
-    Route::get('/contacts', [ContactController::class, 'getAllContacts']);
+
+    Route::get('/contacts', [ContactController::class, 'index']);
+    Route::post('/contacts/create', [ContactController::class, 'create']);
+    Route::get('/contacts/{id}', [ContactController::class, 'show']);
+    Route::put('/contacts/{id}/update', [ContactController::class, 'edit']);
+
     Route::get('/roles', [RoleController::class, 'getAllRoles']);
     Route::get('/roles/{id}', [RoleController::class, 'getContactsByRole']);
 });

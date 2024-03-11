@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Contact;
+use App\Models\ContactInfo;
 use App\Repositories\ContactRepository;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,12 +18,23 @@ class ContactService
 
     public function createContact(array $contact) : Contact
     {
-        return Contact::create($contact);
+        $newContact = Contact::create($contact);
+
+        ContactInfo::create([
+            'contact_id' => $newContact->id
+        ]);
+
+        return $newContact;
     }
 
     public function getContactByEmail(string $email) : Contact
     {
         return $this->contactRepository->getContactByEmail($email);
+    }
+
+    public function getContactById(int $id)
+    {
+        return $this->contactRepository->getContactById($id);
     }
 
     public function validatePassword($contactData) : bool
@@ -39,5 +51,23 @@ class ContactService
     public function getAllContacts()
     {
         return $this->contactRepository->getAllContacts();
+    }
+
+    public function editContact(array $contact, $id): void
+    {
+        $contact = $this->contactRepository->getContactById($id);
+
+        $contact->update([
+            'alias' => $contact->alias,
+        ]);
+
+        $contact->contactInfo()->update([
+            'first_name'    => $contact->first_name,
+            'last_name'     => $contact->last_name,
+            'address'       => $contact->address,
+            'phone_number'  => $contact->phone_number,
+            'organization'  => $contact->organization,
+            'messenger'     => $contact->messenger,
+        ]);
     }
 }

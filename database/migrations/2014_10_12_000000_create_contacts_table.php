@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
+            $table->string('alias')->unique();
             $table->string('password');
             $table->softDeletes();
             $table->rememberToken();

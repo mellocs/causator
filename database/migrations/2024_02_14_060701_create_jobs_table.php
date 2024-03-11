@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('type');
             $table->unsignedBigInteger('dispatcher_id');
-            $table->enum('dispatcher_status', []);
+            $table->enum('dispatcher_status', ['test', 'test2']);
             $table->unsignedBigInteger('executor_id');
             $table->enum('executor_status', ['contact', 'not selected', 'selected', 'invited', 'assigned', 'accepted assignment']);
             $table->enum('assignment_parameters', ['not installed', '?']);
