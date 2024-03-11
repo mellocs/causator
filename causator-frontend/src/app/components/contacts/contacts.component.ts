@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterModule, RouterLink, RouterLinkActive, Router, ActivatedRoute } from '@angular/router';
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { UserService } from '../../services/user.service';
 import { NgFor } from '@angular/common';
@@ -12,7 +12,7 @@ import { NgFor } from '@angular/common';
     RouterLink,
     RouterLinkActive,
     DashboardComponent,
-    NgFor
+    NgFor,
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss'
@@ -21,13 +21,24 @@ export class ContactsComponent implements OnInit {
 
   users: any[] = [];
 
-  constructor(private userService: UserService) { 
+  constructor(
+    private userService: UserService,
+    private readonly router: Router,
+    private route: ActivatedRoute
+    ) { 
 
   }
 
   ngOnInit(): void {
-    this.users = this.userService.users;
-    console.log(this.users);
+    this.userService.getAll().subscribe(
+      (res: any) => {
+        this.users = res.contacts;
+        console.log(this.users);
+      },
+      (error: any) => {
+        console.error('Error loading contacts:', error);
+      }
+    );
   }
   
 }

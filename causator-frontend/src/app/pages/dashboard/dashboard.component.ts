@@ -36,8 +36,4 @@ export class DashboardComponent {
 
   }
 
-  getAllUsers() {
-    this.userService.getAll()
-  }
-
 }
