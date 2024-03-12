@@ -39,6 +39,9 @@ export class RegistrationComponent {
         Validators.required,
         Validators.email
       ]),
+      name: new FormControl('', [
+        Validators.required,
+      ]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
