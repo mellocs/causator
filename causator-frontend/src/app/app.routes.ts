@@ -10,6 +10,7 @@ import { EventsComponent } from './components/events/events.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { RolesComponent } from './components/contacts/roles/roles.component';
 import { RolesItemComponent } from './components/contacts/roles-item/roles-item.component';
+import { ObjectivesComponent } from './components/objectives/objectives.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent, title: 'Causator'},
@@ -22,6 +23,7 @@ export const routes: Routes = [
             {
                 path: 'contacts',
                 component: ContactsComponent,
+                title: 'Contacts'
                 // children: [
                 //     {
                 //         path: 'role/:id', 
@@ -39,15 +41,22 @@ export const routes: Routes = [
             {
                 path: 'notifications',
                 component: NotificationsComponent,
+                title: 'Notifications'
             },
             {
                 path: 'events',
                 component: EventsComponent,
+                title: 'Events'
             },
             {
-                path: 'tasks', 
+                path: 'jobs', 
                 component: TasksComponent, 
-                title: 'Tasks'
+                title: 'Jobs'
+            },
+            {
+                path: 'objectives', 
+                component: ObjectivesComponent, 
+                title: 'Objectives'
             },
             
 
