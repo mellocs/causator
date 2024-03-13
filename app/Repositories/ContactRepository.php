@@ -12,12 +12,12 @@ class ContactRepository
         return Contact::where('email', $email)->first();
     }
 
-    public function getContactById($id)
+    public function getContactById($id) : Contact
     {
         return Contact::findOrFail($id)->with('contactInfo')->first();
     }
 
-    public function getAllContacts() : array
+    public function getAllContacts()
     {
         return Contact::with('contactInfo')->get();
     }
