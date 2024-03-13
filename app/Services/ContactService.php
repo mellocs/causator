@@ -18,11 +18,14 @@ class ContactService
 
     public function createContact(array $contact) : Contact
     {
+        $roleId = 1; // contractor
         $newContact = Contact::create($contact);
 
         ContactInfo::create([
             'contact_id' => $newContact->id
         ]);
+
+        $newContact->roles()->attach($roleId);
 
         return $newContact;
     }
