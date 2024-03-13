@@ -1,7 +1,32 @@
 <div class="p-4 sm:ml-64">
     <section class="">
             <div>
-                <p class="text-2xl mb-5">Contact / Users</p>
+                <!-- <p class="text-2xl mb-5">Contact / Users</p> -->
+                <nav class="bg-grey-light w-full rounded-md">
+                    <ol class="list-reset flex">
+                      <li>
+                        <a
+                          routerLink="/dashboard"
+                          class="text-primary transition duration-150 ease-in-out hover:text-primary-accent-300 focus:text-primary-accent-300 active:text-primary-accent-300 motion-reduce:transition-none dark:text-primary-400"
+                          >Home</a
+                        >
+                      </li>
+                      <li>
+                        <span class="mx-2 text-neutral-400">></span>
+                      </li>
+                      <li>
+                        <a
+                        routerLink="/dashboard/contacts"
+                          class="text-primary transition duration-150 ease-in-out hover:text-primary-accent-300 focus:text-primary-accent-300 active:text-primary-accent-300 motion-reduce:transition-none dark:text-primary-400"
+                          >Contacts/Roles</a
+                        >
+                      </li>
+                      <li>
+                        <span class="mx-2 text-neutral-400">></span>
+                      </li>
+                      <li class="text-neutral-400">{{role}}</li>
+                    </ol>
+                  </nav>
                 <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                     <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                         <div class="w-full md:w-1/2">

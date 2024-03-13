@@ -1,7 +1,21 @@
 <div class="p-4 sm:ml-64">
     <section class="">
             <div>
-                <p class="text-2xl mb-5">Сontacts</p>
+                <nav class="bg-grey-light w-full rounded-md">
+                    <ol class="list-reset flex">
+                      <li>
+                        <a
+                          routerLink="/dashboard"
+                          class="text-primary transition duration-150 ease-in-out hover:text-primary-accent-300 focus:text-primary-accent-300 active:text-primary-accent-300 motion-reduce:transition-none dark:text-primary-400"
+                          >Home</a
+                        >
+                      </li>
+                      <li>
+                        <span class="mx-2 text-neutral-400">></span>
+                      </li>
+                      <li class="text-neutral-400">Contacts</li>
+                    </ol>
+                  </nav>
                 <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                     <div class="flex">
                         <app-roles class="w-1/2 mb-20 mt-5 px-10"></app-roles>
