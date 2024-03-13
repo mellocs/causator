@@ -3,6 +3,9 @@ import { RouterModule, RouterLink, RouterLinkActive, Router, ActivatedRoute } fr
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { UserService } from '../../services/user.service';
 import { NgFor } from '@angular/common';
+import { RolesComponent } from './roles/roles.component';
+import { GroupsComponent } from './groups/groups.component';
+
 
 @Component({
   selector: 'app-contacts',
@@ -13,6 +16,8 @@ import { NgFor } from '@angular/common';
     RouterLinkActive,
     DashboardComponent,
     NgFor,
+    RolesComponent,
+    GroupsComponent
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss'
@@ -30,7 +35,7 @@ export class ContactsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getAll().subscribe(
+    this.userService.getAllContacts().subscribe(
       (res: any) => {
         this.users = res.contacts;
         console.log(this.users);

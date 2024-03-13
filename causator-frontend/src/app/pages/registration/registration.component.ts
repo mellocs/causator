@@ -39,7 +39,7 @@ export class RegistrationComponent {
         Validators.required,
         Validators.email
       ]),
-      name: new FormControl('', [
+      alias: new FormControl('', [
         Validators.required,
       ]),
       password: new FormControl('', [

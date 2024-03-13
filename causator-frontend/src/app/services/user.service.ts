@@ -12,6 +12,9 @@ import { Observable, catchError, tap } from "rxjs";
 export class UserService {
 
     users: any[] = [];
+    roles: any[] = [];
+    roleContacts: any[] = [];
+    
     currentRouteParams: any;
 
     constructor (
@@ -25,7 +28,7 @@ export class UserService {
         
     }
 
-    getAll(): Observable<any[]> {
+    getAllContacts(): Observable<any[]> {
         return this.http.get(`${API_URL}/api/contacts`)
         .pipe(
             catchError(err => {
@@ -34,4 +37,25 @@ export class UserService {
             tap((res: any) => this.users),
         )
     }
+
+    getAllRoles(): Observable<any[]> {
+        return this.http.get(`${API_URL}/api/roles`)
+        .pipe(
+            catchError(err => {
+                throw new Error(err.message) 
+            }),
+            tap((res: any) => this.roles),
+        )
+    }
+
+    getContactsByRole(): Observable<any[]> {
+        return this.http.get(`${API_URL}/api/roles/:id`)
+        .pipe(
+            catchError(err => {
+                throw new Error(err.message) 
+            }),
+            tap((res: any) => this.roleContacts),
+        )
+    }
+
 }

@@ -1,7 +1,7 @@
 <div class="p-4 sm:ml-64">
     <section class="">
             <div class="">
-                <p class="text-2xl">Tasks</p>
+                <p class="text-2xl">Jobs</p>
                 <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                     <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                         <div class="w-full md:w-1/2">
@@ -22,7 +22,7 @@
                                 <svg class="w-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
                                 </svg>
-                                Add task
+                                Add job
                             </button>
                             <div class="flex items-center space-x-3 w-full md:w-auto">
                                 <button id="actionsDropdownButton" data-dropdown-toggle="actionsDropdown" class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button">
@@ -81,7 +81,7 @@
                     @if(addNew) {
                         <section class="">
                             <div class="py-8  mx-auto max-w-2xl place-items-center">
-                                <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a new type tasks</h2>
+                                <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a new type jobs</h2>
                                     <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                         <div class="sm:col-span-2">
                                             <input [(ngModel)]="newTask" type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type task name" required="">

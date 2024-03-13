@@ -27,7 +27,7 @@ export class AuthService {
         
     }
 
-    signUp(userData: ISignupUser) {
+    signUp(userData: ISignupUser) { 
         return this.http.post(`${API_URL}/api/register`, userData)
         .pipe(
             catchError(err => {
