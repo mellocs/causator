@@ -30,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class RolesItemComponent implements OnInit {
 
   role!: Observable<UserService[]>;
+  role_id!: Observable<UserService[]>;
   roles: any[] = [];
   users: any[] = [];
   showForm: boolean = false;
@@ -45,6 +46,9 @@ export class RolesItemComponent implements OnInit {
   ) {
 
     this.userData = new FormGroup({
+      role_id: new FormControl('', [
+        Validators.required
+      ]),
       email: new FormControl('', [
         Validators.required,
         Validators.email
@@ -76,7 +80,7 @@ export class RolesItemComponent implements OnInit {
       this.userService.getAllRoles().subscribe(
         (res: any) => {
           this.role = res.roles[id-1].name;
-          // console.log(res.roles[id-1].name)
+          this.role_id = res.roles[id-1].id;
         },
         (error: any) => {
           console.error('Error loading roles:', error);
@@ -89,8 +93,9 @@ export class RolesItemComponent implements OnInit {
 
   addUser(): void {
     if (this.userData.valid) {
-      this.userService.addNewUser(this.userData.value)
-      this.userData.reset({ alias: '', email: '', password:''})
+      this.userService.addNewUser(this.userData.value);
+      console.log(this.role_id);
+      // this.userData.reset({ alias: '', email: '', password:''})
       console.log(this.userData.value);
       
     } else {

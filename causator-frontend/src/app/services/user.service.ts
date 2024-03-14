@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { IUser } from "../interfaces/user.interface";
+import { IUserRole } from "../interfaces/user.interface";
 import { API_URL } from "../constants/constants";
 import { Observable, catchError, tap } from "rxjs";
 import { ToastrService } from "ngx-toastr";
@@ -61,7 +61,7 @@ export class UserService {
         )
     }
 
-    addNewUser(userData: IUser) { 
+    addNewUser(userData: IUserRole) { 
         return this.http.post(`${API_URL}/api/contacts/create`, userData)
         .pipe(
             catchError(err => {
