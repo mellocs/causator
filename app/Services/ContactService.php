@@ -24,6 +24,9 @@ class ContactService
             'contact_id' => $newContact->id
         ]);
 
+        $roleId = $contact['roleId'];
+        $newContact->roles()->attach($roleId);
+
         return $newContact;
     }
 
@@ -53,7 +56,7 @@ class ContactService
         return $this->contactRepository->getAllContacts();
     }
 
-    public function editContact(array $contact, $id): void
+    public function editContact(array $contact, $id)
     {
         $contact = $this->contactRepository->getContactById($id);
 
@@ -69,5 +72,7 @@ class ContactService
             'organization'  => $contact->organization,
             'messenger'     => $contact->messenger,
         ]);
+
+        return $contact;
     }
 }

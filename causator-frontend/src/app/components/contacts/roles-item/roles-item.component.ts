@@ -24,6 +24,7 @@ export class RolesItemComponent implements OnInit {
 
     role!: Observable<UserService[]>;
     selectedId = 0;
+    roles:any [] = [];
 
   constructor(
     private userService: UserService,
@@ -42,7 +43,17 @@ export class RolesItemComponent implements OnInit {
         return this.userService.getContactsByRole();
       })
     );
-    console.log(this.selectedId)
+    this.userService.getAllContacts().subscribe(
+      (res: any) => {
+        this.roles = res.contacts;
+        console.log(this.roles);
+        console.log(this.selectedId)
+        console.log('1111',this.role);
+      },
+      (error: any) => {
+        console.error('Error loading contacts:', error);
+      }
+    );
 
     
   }

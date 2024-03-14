@@ -24,13 +24,23 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
     Route::get('/contacts', [ContactController::class, 'index']);
-    Route::post('/contacts/create', [ContactController::class, 'create']);
+
+//    Route::post('/contacts/create', [ContactController::class, 'create']);
     Route::get('/contacts/{id}', [ContactController::class, 'show']);
     Route::put('/contacts/{id}/update', [ContactController::class, 'edit']);
 
     Route::get('/roles', [RoleController::class, 'getAllRoles']);
     Route::get('/roles/{id}', [RoleController::class, 'getContactsByRole']);
+
+
+
+    Route::group(['middleware' => ['role:owner']], function () {
+        Route::post('/contacts/create', [ContactController::class, 'create']);
+        Route::get('/test', [ContactController::class, 'test']);
+    });
 });
+
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
