@@ -1,10 +1,12 @@
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, RouterLink, RouterLinkActive, ActivatedRoute, Router } from '@angular/router';
+import { RouterModule, RouterLink, RouterLinkActive, ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { DashboardComponent } from '../../../pages/dashboard/dashboard.component';
 import { ContactsComponent } from '../contacts.component';
 import { UserService } from '../../../services/user.service';
 import { Observable, Subscription, switchMap } from 'rxjs';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-roles-item',
@@ -15,16 +17,26 @@ import { Observable, Subscription, switchMap } from 'rxjs';
     RouterLinkActive,
     DashboardComponent,
     NgFor,
-    ContactsComponent
+    ContactsComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    NgIf,
+    CommonModule, 
+    HttpClientModule, 
+    RouterOutlet
   ],
   templateUrl: './roles-item.component.html',
-  styleUrl: './roles-item.component.scss'
 })
 export class RolesItemComponent implements OnInit {
 
   role!: Observable<UserService[]>;
   roles: any[] = [];
-  users: any[] = []
+  users: any[] = [];
+  showForm: boolean = false;
+  newUser: string = '';
+  userData: FormGroup;
+
+
 
   constructor(
     private userService: UserService,
@@ -32,6 +44,20 @@ export class RolesItemComponent implements OnInit {
     private route: ActivatedRoute,
   ) {
 
+    this.userData = new FormGroup({
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email
+      ]),
+      alias: new FormControl('', [
+        Validators.required,
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        // Validators.minLength(8),
+        // Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)
+      ]),
+    }) 
   }
 
   ngOnInit() {
@@ -58,6 +84,26 @@ export class RolesItemComponent implements OnInit {
       );
 
     });
+  }
+  
+
+  addUser(): void {
+    if (this.userData.valid) {
+      this.userService.addNewUser(this.userData.value)
+      this.userData.reset({ alias: '', email: '', password:''})
+      console.log(this.userData.value);
+      
+    } else {
+      console.log("invalid user data");
+    } 
+  }
+
+  showAddForm() {
+    this.showForm = !this.showForm
+  }
+
+  close() {
+    this.showForm = !this.showForm
   }
 
 
