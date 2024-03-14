@@ -65,12 +65,12 @@ class ContactService
         ]);
 
         $contact->contactInfo()->update([
-            'first_name'    => $contact->first_name,
-            'last_name'     => $contact->last_name,
-            'address'       => $contact->address,
-            'phone_number'  => $contact->phone_number,
-            'organization'  => $contact->organization,
-            'messenger'     => $contact->messenger,
+            'first_name'    => $contact['first_name'],
+            'last_name'     => $contact['last_name'],
+            'address'       => $contact['address'],
+            'phone_number'  => $contact['phone_number'],
+            'organization'  => $contact['organization'],
+            'messenger'     => $contact['messenger'],
         ]);
 
         return $contact;

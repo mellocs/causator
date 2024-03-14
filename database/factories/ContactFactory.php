@@ -2,12 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\Contact;
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends
  */
 class ContactFactory extends Factory
 {
@@ -24,10 +26,20 @@ class ContactFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'alias' => fake()->unique()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => static::$password ??= Hash::make('test'),
             'remember_token' => Str::random(10),
         ];
+    }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (Contact $contact) {
+            $ownerRole = Role::where('name', 'owner')->first();
+
+            $roles = Role::where('id', '!=', $ownerRole->id)->get()->random(mt_rand(1, 1))->pluck('id');
+            $contact->roles()->attach($roles);
+        });
     }
 }

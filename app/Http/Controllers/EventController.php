@@ -28,7 +28,7 @@ class EventController extends Controller
         $eventData = $request->validate([
             'type' => 'string',
             'source' => 'string',
-            'contact_id' => 'int',
+            'contactName' => 'string',
             'communication' => 'string',
             'description' => 'string',
             'isContentExist' => 'bool'
