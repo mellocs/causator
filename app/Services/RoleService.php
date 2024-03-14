@@ -21,4 +21,9 @@ class RoleService
     {
         return $this->roleRepository->getContactsByRole($roleId);
     }
+
+    public function hasRole($role)
+    {
+        return $this->roleRepository->hasRole($role);
+    }
 }

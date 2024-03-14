@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Services\ContactService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
@@ -34,6 +35,7 @@ class ContactController extends Controller
         $contactData = $request->validate([
             'email' => 'required|string|unique:contacts,email',
             'alias' => 'required|string|unique:contacts,alias',
+            'roleId' => 'required|int',
             'password' => 'required|string'
         ]);
 
@@ -58,10 +60,8 @@ class ContactController extends Controller
 
         $contact = $this->contactService->editContact($validatedRequest, $id);
 
-        $newContact = $this->contactService->getContactById($id);
-
         return response()->json([
-            'contact' => $newContact
+            'contact' => $contact
         ], 201);
     }
 
@@ -72,5 +72,13 @@ class ContactController extends Controller
         return response()->json([
             'contact' => $contact
         ], 201);
+    }
+
+    public function test()
+    {
+        $info =  Auth::user();
+        return response()->json([
+           'message' =>  $info['id']
+        ]);
     }
 }
