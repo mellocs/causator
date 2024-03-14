@@ -48,8 +48,8 @@ export class UserService {
         )
     }
 
-    getContactsByRole(): Observable<any[]> {
-        return this.http.get(`${API_URL}/api/roles/:id`)
+    getContactsByRole(id:string): Observable<any[]> {
+        return this.http.get(`${API_URL}/api/roles/${id}`)
         .pipe(
             catchError(err => {
                 throw new Error(err.message) 

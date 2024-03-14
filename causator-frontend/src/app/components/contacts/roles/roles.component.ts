@@ -35,12 +35,11 @@ export class RolesComponent implements OnInit {
     this.userService.getAllRoles().subscribe(
       (res: any) => {
         this.roles = res.roles;
-        console.log(res);
+        // console.log(res);
       },
       (error: any) => {
         console.error('Error loading roles:', error);
       }
     );
   }
-
 }

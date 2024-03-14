@@ -44,8 +44,8 @@ export class RegistrationComponent {
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
-        Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)
+        // Validators.minLength(8),
+        // Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)
       ]),
       password_confirmation: new FormControl('', [
         Validators.required,

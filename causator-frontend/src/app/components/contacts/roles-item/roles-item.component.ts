@@ -4,7 +4,7 @@ import { RouterModule, RouterLink, RouterLinkActive, ActivatedRoute, Router } fr
 import { DashboardComponent } from '../../../pages/dashboard/dashboard.component';
 import { ContactsComponent } from '../contacts.component';
 import { UserService } from '../../../services/user.service';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, Subscription, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-roles-item',
@@ -22,40 +22,42 @@ import { Observable, switchMap } from 'rxjs';
 })
 export class RolesItemComponent implements OnInit {
 
-    role!: Observable<UserService[]>;
-    selectedId = 0;
-    roles:any [] = [];
+  role!: Observable<UserService[]>;
+  roles: any[] = [];
+  users: any[] = []
 
   constructor(
     private userService: UserService,
     private readonly router: Router,
-    private route: ActivatedRoute
-    ) { 
+    private route: ActivatedRoute,
+  ) {
 
   }
 
-
   ngOnInit() {
-    this.role = this.route.paramMap.pipe(
-      switchMap(params => {
-        this.selectedId = parseInt(params.get('id')!, 10);
-        console.log(this.selectedId)
-        return this.userService.getContactsByRole();
-      })
-    );
-    this.userService.getAllContacts().subscribe(
-      (res: any) => {
-        this.roles = res.contacts;
-        console.log(this.roles);
-        console.log(this.selectedId)
-        console.log('1111',this.role);
-      },
-      (error: any) => {
-        console.error('Error loading contacts:', error);
-      }
-    );
+    this.route.params.subscribe(params => {
+      const id = params['id'];
 
-    
+      this.userService.getContactsByRole(id).subscribe(
+        (res: any) => {
+          this.users = res.contacts;
+        },
+        (error: any) => {
+          console.error('Error loading contacts:', error);
+        }
+      );
+
+      this.userService.getAllRoles().subscribe(
+        (res: any) => {
+          this.role = res.roles[id-1].name;
+          // console.log(res.roles[id-1].name)
+        },
+        (error: any) => {
+          console.error('Error loading roles:', error);
+        }
+      );
+
+    });
   }
 
 

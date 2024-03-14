@@ -30,7 +30,7 @@ export class ContactsComponent implements OnInit {
     private userService: UserService,
     private readonly router: Router,
     private route: ActivatedRoute
-    ) { 
+  ) {
 
   }
 
@@ -38,12 +38,11 @@ export class ContactsComponent implements OnInit {
     this.userService.getAllContacts().subscribe(
       (res: any) => {
         this.users = res.contacts;
-        console.log(this.users);
       },
       (error: any) => {
         console.error('Error loading contacts:', error);
       }
     );
   }
-  
+
 }
