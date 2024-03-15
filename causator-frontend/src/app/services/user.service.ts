@@ -66,11 +66,12 @@ export class UserService {
         .pipe(
             catchError(err => {
                 throw new Error(err.message),
-                this.toastr.error("Акаунт з такою ел. поштою вже існує!", 'Помилка')
+                this.toastr.error("Something wrong!", 'Error')
             })
         )
         .subscribe(res => {
-            this.toastr.success('Аккаунт створено!', 'Успіх!');
+            this.toastr.success('Account create!', 'Success!');
+            this.getContactsByRole
             // form.resetForm();
         });
     }

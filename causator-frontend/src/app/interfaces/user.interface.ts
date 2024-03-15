@@ -1,5 +1,5 @@
 export interface IUserRole {
-    role_id: number
+    roleId: number
     email: string
     password: string
     name: string

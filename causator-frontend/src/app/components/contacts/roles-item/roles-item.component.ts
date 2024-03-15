@@ -30,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class RolesItemComponent implements OnInit {
 
   role!: Observable<UserService[]>;
-  role_id!: Observable<UserService[]>;
+  roleId!: Observable<UserService[]>;
   roles: any[] = [];
   users: any[] = [];
   showForm: boolean = false;
@@ -45,8 +45,9 @@ export class RolesItemComponent implements OnInit {
     private route: ActivatedRoute,
   ) {
 
+    
     this.userData = new FormGroup({
-      role_id: new FormControl('', [
+      roleId: new FormControl(this.roleId, [
         Validators.required
       ]),
       email: new FormControl('', [
@@ -58,13 +59,18 @@ export class RolesItemComponent implements OnInit {
       ]),
       password: new FormControl('', [
         Validators.required,
-        // Validators.minLength(8),
-        // Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)
       ]),
     }) 
+
+    this.getAll()
+    
   }
 
   ngOnInit() {
+    
+  }
+
+  getAll() {
     this.route.params.subscribe(params => {
       const id = params['id'];
 
@@ -80,7 +86,10 @@ export class RolesItemComponent implements OnInit {
       this.userService.getAllRoles().subscribe(
         (res: any) => {
           this.role = res.roles[id-1].name;
-          this.role_id = res.roles[id-1].id;
+          this.roleId = res.roles[id-1].id;
+          this.userData.get('roleId')?.setValue(this.roleId);
+          console.log(this.roleId);
+          
         },
         (error: any) => {
           console.error('Error loading roles:', error);
@@ -92,11 +101,11 @@ export class RolesItemComponent implements OnInit {
   
 
   addUser(): void {
-    if (this.userData.valid) {
+    if (this.userData) {
       this.userService.addNewUser(this.userData.value);
-      console.log(this.role_id);
-      // this.userData.reset({ alias: '', email: '', password:''})
+      console.log(this.roleId);
       console.log(this.userData.value);
+      this.getAll()
       
     } else {
       console.log("invalid user data");
