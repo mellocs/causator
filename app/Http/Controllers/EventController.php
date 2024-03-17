@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\EventService;
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request;
 
 
 class EventController extends Controller
@@ -26,12 +26,16 @@ class EventController extends Controller
     public function createEvent(Request $request)
     {
         $eventData = $request->validate([
-            'type' => 'string',
-            'source' => 'string',
-            'contactName' => 'string',
-            'communication' => 'string',
-            'description' => 'string',
-            'isContentExist' => 'bool'
+            'contactName'   => 'string',
+            'type'          => 'string',
+            'source'        => 'string',
+            'content'       => 'string',
+        ]);
+
+        $event = $this->eventService->createEvent($eventData);
+
+        return response()->json([
+           'event' => $event
         ]);
     }
 }

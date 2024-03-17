@@ -11,6 +11,10 @@ class ContactRepository
     {
         return Contact::where('email', $email)->first();
     }
+    public function getContactByAlias($alias) : Contact
+    {
+        return Contact::where('alias', $alias)->first();
+    }
 
     public function getContactById($id) : Contact
     {
