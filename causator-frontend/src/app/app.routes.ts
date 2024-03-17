@@ -37,11 +37,11 @@ export const routes: Routes = [
                 component: RolesItemComponent, 
                 title: 'RolesItem'
             },
-            // {
-            //     path: 'contacts/contact-info/show/:id',
-            //     component: ContactsComponent, 
-            //     title: 'ContactComponent'
-            // },
+            {
+                path: 'contacts/contact-info/show/:id',
+                component: ContactsComponent, 
+                title: 'ContactComponent'
+            },
             
             {
                 path: 'notifications',
