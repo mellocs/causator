@@ -3,14 +3,16 @@
 namespace App\Services;
 
 use App\Models\Event;
+use App\Repositories\ContactRepository;
 use App\Repositories\EventRepository;
 
 class EventService
 {
-    protected $eventRepository;
-    public function __construct(EventRepository $eventRepository)
+    protected $eventRepository, $contactRepository;
+    public function __construct(EventRepository $eventRepository, ContactRepository $contactRepository)
     {
         $this->eventRepository = $eventRepository;
+        $this->contactRepository = $contactRepository;
     }
 
     public function getAllEvents()
@@ -18,9 +20,18 @@ class EventService
         return $this->eventRepository->getAllEvents();
     }
 
-    public function createEvent(array $event) : Event
+    public function createEvent($eventData) : Event
     {
         // also create process
-        return Event::create($event);
+        $contact = $this->contactRepository->getContactByAlias($eventData['contactName']);
+
+        $event = Event::create([
+            'contact_id'    => $contact['id'],
+            'type'          => $eventData['type'],
+            'source'        => $eventData['source'],
+            'content'       => $eventData['content']
+        ]);
+
+        return $event;
     }
 }

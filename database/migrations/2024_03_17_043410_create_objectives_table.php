@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('objectives', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('contact_id');
             $table->string('type');
-            $table->string('source');
-            $table->string('content');
+            $table->string('parameters');
+            $table->string('scenario');
+            $table->string('resources');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('objectives');
     }
 };

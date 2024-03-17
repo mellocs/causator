@@ -5,14 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Objective extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'contact_id',
-        'type',
-        'source',
-        'content'
-    ];
 }

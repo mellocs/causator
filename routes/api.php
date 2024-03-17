@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,16 +24,23 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
+    // contacts routes
     Route::get('/contacts', [ContactController::class, 'index']);
-
     Route::get('/contacts/{id}', [ContactController::class, 'show']);
     Route::put('/contacts/{id}/update', [ContactController::class, 'edit']);
 
+    // roles routes
     Route::get('/roles', [RoleController::class, 'getAllRoles']);
     Route::get('/roles/{id}', [RoleController::class, 'getContactsByRole']);
 
+    // events routes
+    Route::get('/events', [EventController::class, 'getAllEvents']);
+    Route::post('/events/create', [EventController::class, 'createEvent']);
 
 
+
+
+    // owner routes
     Route::group(['middleware' => ['role:owner']], function () {
         Route::post('/contacts/create', [ContactController::class, 'create']);
         Route::get('/test', [ContactController::class, 'test']);
