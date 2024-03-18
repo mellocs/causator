@@ -1,5 +1,6 @@
 export interface IEvent {
-    name: string
+    contactName: string
+    type: string
     source: string
-    description: string
+    content: string
   }

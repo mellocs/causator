@@ -33,19 +33,20 @@
                 </div>
 
                 @if(showForm) {
-                    <form action="#">
+                    <form [formGroup]="eventData" (ngSubmit)="addEvent()" action="#" method="POST" >
                         <div class="grid gap-4 mb-4 sm:grid-cols-2">
+                            <input type="hidden" formControlName="contactName" id="contactName" required>
                             <div>
-                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type name" required="">
+                                <label for="type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
+                                <input type="text" formControlName="type" id="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type type" required="">
                             </div>
                             <div>
                                 <label for="source" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Source</label>
-                                <input type="text" name="source" id="source" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type Source" required="">
+                                <input type="text" formControlName="source" id="source" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type source" required="">
                             </div>
                             <div class="sm:col-span-2">
-                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                                <textarea id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write description here"></textarea>                    
+                                <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                                <textarea id="content" formControlName="content" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write description here"></textarea>                    
                             </div>
                         </div>
                         <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -57,49 +58,35 @@
                 }
 
                 <div class="overflow-x-auto">
-                    <!-- <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th scope="col" class="px-4 py-3">Id</th>
-                                <th scope="col" class="px-4 py-3">Email</th>
-                                <th scope="col" class="px-4 py-3">Role</th>
-                                <th scope="col" class="px-4 py-3">Group</th>
-                                <th scope="col" class="px-4 py-3">Status</th>
+                                <th scope="col" class="px-4 w-6 py-3 text-center">Contact Id</th>
+                                <th scope="col" class="px-4 py-3">Type</th>
+                                <th scope="col" class="px-4 py-3">Source</th>
+                                <th scope="col" class="px-4 py-3">Content</th>
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @for (user of users; track user.id) {
+                            @for (event of events; track event.id) {
                             <tr class="border-b dark:border-gray-700 hover:bg-gray-600">
                                 <th scope="row"
-                                    class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{user.id}}</th>
-                                <th scope="row"
-                                    class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <a [routerLink]="['user', user.id]" class="block py-2 px-4">{{user.email}}</a>
+                                    class="px-4 text-center py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{event.contact_id}}
                                 </th>
                                 <td class="px-4 py-2">
                                     <span
                                         class="inline-block bg-purple-800  text-white text-xs font-medium px-2 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
-                                        <svg class="inline-block w-4 h-4 text-gray-800 dark:text-white"
-                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="white"
-                                            viewBox="0 0 24 24">
-                                            <path fill-rule="evenodd"
-                                                d="M12 2a3 3 0 0 0-2.1.9l-.9.9a1 1 0 0 1-.7.3H7a3 3 0 0 0-3 3v1.2c0 .3 0 .5-.2.7l-1 .9a3 3 0 0 0 0 4.2l1 .9c.2.2.3.4.3.7V17a3 3 0 0 0 3 3h1.2c.3 0 .5 0 .7.2l.9 1a3 3 0 0 0 4.2 0l.9-1c.2-.2.4-.3.7-.3H17a3 3 0 0 0 3-3v-1.2c0-.3 0-.5.2-.7l1-.9a3 3 0 0 0 0-4.2l-1-.9a1 1 0 0 1-.3-.7V7a3 3 0 0 0-3-3h-1.2a1 1 0 0 1-.7-.2l-.9-1A3 3 0 0 0 12 2Zm3.7 7.7a1 1 0 1 0-1.4-1.4L10 12.6l-1.3-1.3a1 1 0 0 0-1.4 1.4l2 2c.4.4 1 .4 1.4 0l5-5Z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        {{role}}</span>
+                                        {{event.type}}</span>
                                 </td>
-                                <td class="px-4 py-3">Custom</td>
+                                <td class="px-4 py-3"> {{event.source}}</td>
                                 <td class="px-4 py-3">
-                                    <label class="inline-flex items-center cursor-pointer">
-                                        <input type="checkbox" value="" class="sr-only peer" checked>
-                                        <div
-                                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
-                                        </div>
-                                    </label>
+                                    <span
+                                        class="">
+                                        {{event.content}}</span>
                                 </td>
                                 <td class="px-4 py-3 flex items-center justify-end">
                                     <button id="apple-imac-27-dropdown-button"
@@ -131,12 +118,12 @@
                                         </div>
                                     </div>
                                 </td>
-                            </tr> -->
-                            <!-- } @empty {
+                            </tr>
+                            } @empty {
                             Empty list of users
-                            } -->
-                        <!-- </tbody> -->
-                    <!-- </table> -->
+                            }
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
