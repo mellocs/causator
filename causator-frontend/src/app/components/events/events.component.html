@@ -7,7 +7,7 @@
                 <ol class="list-reset flex">
                     <li>
                         <a routerLink="/dashboard/events"
-                            class="text-blue transition duration-150 ease-in-out hover:text-blue-accent-300 focus:text-blue-accent-300 active:text-blue-accent-300 motion-reduce:transition-none dark:text-blue-400">Events</a>
+                            class="text-blue transition duration-150 ease-in-out hover:text-blue-accent-300 focus:text-blue-accent-300 active:text-blue-accent-300 motion-reduce:transition-none">Events</a>
                     </li>
                     <li>
                         <span class="mx-2 text-neutral-400">></span>
@@ -33,7 +33,7 @@
                 </div>
 
                 @if(showForm) {
-                    <form [formGroup]="eventData" (ngSubmit)="addEvent()" action="#" method="POST" >
+                    <form [formGroup]="eventData" (ngSubmit)="addEvent()" action="#" method="POST" class="py-4" >
                         <div class="grid gap-4 mb-4 sm:grid-cols-2">
                             <input type="hidden" formControlName="contactName" id="contactName" required>
                             <div>

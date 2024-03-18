@@ -11,6 +11,7 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { RolesComponent } from './components/contacts/roles/roles.component';
 import { RolesItemComponent } from './components/contacts/roles-item/roles-item.component';
 import { ObjectivesComponent } from './components/objectives/objectives.component';
+import { ContactComponent } from './components/contacts/contact/contact.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent, title: 'Causator'},
@@ -39,7 +40,7 @@ export const routes: Routes = [
             },
             {
                 path: 'contacts/contact-info/show/:id',
-                component: ContactsComponent, 
+                component: ContactComponent,
                 title: 'ContactComponent'
             },
             

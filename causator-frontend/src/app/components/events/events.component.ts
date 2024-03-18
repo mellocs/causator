@@ -50,9 +50,15 @@ export class EventsComponent implements OnInit {
       source: new FormControl('', [Validators.required]),
       content: new FormControl('', [Validators.required]),
     });
+
+    this.getAllEvents()
   }
 
   ngOnInit(): void {
+    
+  }
+
+  getAllEvents() {
     this.eventsService.getAllEvents().subscribe(
       (res: any) => {
         this.events = res.events;
@@ -69,6 +75,8 @@ export class EventsComponent implements OnInit {
     } else {
       console.log('invalid events data');
     }
+    this.getAllEvents()
+
   }
 
   showAddForm() {

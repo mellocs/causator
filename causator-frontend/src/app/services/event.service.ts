@@ -49,6 +49,7 @@ export class EventsService {
         )
         .subscribe(res => {
             this.toastr.success('Event added!', 'Success!');
+            this.getAllEvents
         });
     }
 }
