@@ -15,6 +15,7 @@ export class UserService {
     users: any[] = [];
     roles: any[] = [];
     roleContacts: any[] = [];
+    idContact: any[] = [];
     contact: any[] = [];
     
     currentRouteParams: any;
@@ -58,6 +59,16 @@ export class UserService {
                 throw new Error(err.message) 
             }),
             tap((res: any) => this.roleContacts),
+        )
+    }
+
+    getContactsById(id:string): Observable<any[]> {
+        return this.http.get(`${API_URL}/api/contacts/${id}`)
+        .pipe(
+            catchError(err => {
+                throw new Error(err.message) 
+            }),
+            tap((res: any) => this.idContact),
         )
     }
 

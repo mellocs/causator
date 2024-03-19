@@ -5,7 +5,7 @@ import { API_URL } from "../constants/constants";
 import { catchError } from "rxjs";
 import { ToastrService } from 'ngx-toastr';
 import { ISignupUser } from "../interfaces/signup.interface";
-import { IAuthUser, IUser } from "../interfaces/auth.interface";
+import { IAuthUser } from "../interfaces/auth.interface";
 
 @Injectable({
     providedIn: 'root',
@@ -15,6 +15,8 @@ export class AuthService {
 
 
     isAuthSig = signal<boolean>(false)
+
+    accountData: any;
     
     
     constructor (
@@ -26,6 +28,11 @@ export class AuthService {
         this.isAuthSig.set(!!token)
         
     }
+
+    // getAccountData(): any {
+    //     console.log(111)
+    //     return this.accountData
+    // }
 
     signUp(userData: ISignupUser) { 
         return this.http.post(`${API_URL}/api/register`, userData)
@@ -42,7 +49,7 @@ export class AuthService {
     }
 
     login(userData: IAuthUser) {
-        return this.http.post<IUser>(`${API_URL}/api/login`, userData)
+        return this.http.post<IAuthUser>(`${API_URL}/api/login`, userData)
         .pipe(
             catchError(err => {
                 throw new Error(err.message),
@@ -50,17 +57,23 @@ export class AuthService {
             })
             
         )
-        .subscribe((res: IUser) => {
+        .subscribe((res: any) => {
+            this.accountData = res;
             this.isAuthSig.set(true)
             this.router.navigate(['dashboard']);
             localStorage.setItem('auth_token', res.token);
+            const alias = res.contact.alias;
+            localStorage.setItem('alias', alias);
+            console.log(res)
         })
     }
 
     logout() {
         localStorage.removeItem('auth_token');
+        localStorage.removeItem('alias');
         this.isAuthSig.set(false)
         this.router.navigate(['login']);
         this.toastr.success('Ви вийшли з аккаунту')
     }
+
 } 

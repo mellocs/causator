@@ -27,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   templateUrl: './roles-item.component.html',
 })
-export class RolesItemComponent implements OnInit {
+export class RolesItemComponent {
 
   role!: Observable<UserService[]>;
   roleId!: Observable<UserService[]>;
@@ -66,9 +66,6 @@ export class RolesItemComponent implements OnInit {
     
   }
 
-  ngOnInit() {
-    
-  }
 
   getAll() {
     this.route.params.subscribe(params => {

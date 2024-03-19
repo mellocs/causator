@@ -28,27 +28,28 @@ export class EventsService {
         
     }
 
-    // getAllEvents(): Observable<any[]> {
-    //     return this.http.get(`${API_URL}/api/events`)
-    //     .pipe(
-    //         catchError(err => {
-    //             throw new Error(err.message) 
-    //         }),
-    //         tap((res: any) => this.events),
-    //     )
-    // }
+    getAllEvents(): Observable<any[]> {
+        return this.http.get(`${API_URL}/api/events`)
+        .pipe(
+            catchError(err => {
+                throw new Error(err.message) 
+            }),
+            tap((res: any) => this.events),
+        )
+    }
 
 
-    // addNewEvent(eventData: IEvent) { 
-    //     return this.http.post(`${API_URL}/api/event/create`, eventData)
-    //     .pipe(
-    //         catchError(err => {
-    //             throw new Error(err.message),
-    //             this.toastr.error("Something wrong!", 'Error')
-    //         })
-    //     )
-    //     .subscribe(res => {
-    //         this.toastr.success('Event added!', 'Success!');
-    //     });
-    // }
+    addNewEvent(eventData: IEvent) { 
+        return this.http.post(`${API_URL}/api/events/create`, eventData)
+        .pipe(
+            catchError(err => {
+                throw new Error(err.message),
+                this.toastr.error("Something wrong!", 'Error')
+            })
+        )
+        .subscribe(res => {
+            this.toastr.success('Event added!', 'Success!');
+            this.getAllEvents
+        });
+    }
 }
