@@ -5,7 +5,7 @@ import { DashboardComponent } from '../../../pages/dashboard/dashboard.component
 import { ContactsComponent } from '../contacts.component';
 import { UserService } from '../../../services/user.service';
 import { Observable, Subscription, switchMap } from 'rxjs';
-import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
@@ -97,7 +97,7 @@ export class RolesItemComponent {
   }
   
 
-  addUser(form: NgForm): void {
+  addUser(form: FormGroupDirective): void {
     if (this.userData) {
       this.userService.addNewUser(this.userData.value);
       console.log(this.roleId);
