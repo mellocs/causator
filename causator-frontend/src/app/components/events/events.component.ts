@@ -1,7 +1,7 @@
 import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet, ActivatedRoute, Router } from '@angular/router';
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { ContactsComponent } from '../contacts/contacts.component';
@@ -69,9 +69,10 @@ export class EventsComponent implements OnInit {
     );
   }
 
-  addEvent(): void {
+  addEvent(form: NgForm): void {
     if (this.eventData) {
       this.eventsService.addNewEvent(this.eventData.value);
+      form.reset();
     } else {
       console.log('invalid events data');
     }

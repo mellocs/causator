@@ -31,7 +31,7 @@ export class UserService {
             this.currentRouteParams = params;
         });
         
-    }
+            }
 
     getAllContacts(): Observable<any[]> {
         return this.http.get(`${API_URL}/api/contacts`)
@@ -84,7 +84,7 @@ export class UserService {
         .subscribe(res => {
             this.toastr.success('Account create!', 'Success!');
             this.getContactsByRole
-            // form.resetForm();
+            
         });
     }
 
