@@ -16,6 +16,7 @@ export class UserService {
     roles: any[] = [];
     roleContacts: any[] = [];
     idContact: any[] = [];
+    currentContact: any[] = [];
     contact: any[] = [];
     
     currentRouteParams: any;
@@ -94,6 +95,16 @@ export class UserService {
                 throw new Error(err.message) 
             }),
             tap((res: any) => this.roleContacts),
+        )
+    }
+
+    getCurrentContact(): Observable<any[]> {
+        return this.http.get(`${API_URL}/api/contacts/current`)
+        .pipe(
+            catchError(err => {
+                throw new Error(err.message) 
+            }),
+            tap((res: any) => this.currentContact),
         )
     }
 

@@ -12,6 +12,7 @@ import { RolesComponent } from './components/contacts/roles/roles.component';
 import { RolesItemComponent } from './components/contacts/roles-item/roles-item.component';
 import { ObjectivesComponent } from './components/objectives/objectives.component';
 import { ContactComponent } from './components/contacts/contact/contact.component';
+import { AccountComponent } from './components/account/account.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent, title: 'Causator'},
@@ -63,6 +64,11 @@ export const routes: Routes = [
                 path: 'objectives', 
                 component: ObjectivesComponent, 
                 title: 'Objectives'
+            },
+            {
+                path: 'account', 
+                component: AccountComponent, 
+                title: 'Account'
             },
             
 
