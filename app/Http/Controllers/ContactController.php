@@ -81,4 +81,13 @@ class ContactController extends Controller
            'message' =>  $info['id']
         ]);
     }
+
+    public function getCurrentContact()
+    {
+        $contact = Auth::user();
+
+        return response()->json([
+           'contact' => $contact
+        ]);
+    }
 }

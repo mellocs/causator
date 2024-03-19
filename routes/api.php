@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // contacts routes
     Route::get('/contacts', [ContactController::class, 'index']);
+    Route::get('/contacts/current', [ContactController::class, 'getCurrentContact']);
     Route::get('/contacts/{id}', [ContactController::class, 'show']);
     Route::put('/contacts/{id}/update', [ContactController::class, 'edit']);
 
