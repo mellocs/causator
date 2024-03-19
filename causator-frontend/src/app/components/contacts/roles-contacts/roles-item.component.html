@@ -198,7 +198,7 @@
                                     {{user.id}}</th>
                                 <th scope="row"
                                     class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <a [routerLink]="['/dashboard/contacts/contact-info/show', user.id]" class="block py-2 px-4">{{user.email}}</a>
+                                    <a [routerLink]="['/dashboard/contacts/contact-info/show', user.id]" class="block py-1 px-4">{{user.email}}</a>
                                 </th>
                                 <td class="px-4 py-2">
                                     <span
@@ -212,7 +212,7 @@
                                         </svg> -->
                                         {{role}}</span>
                                 </td>
-                                <td class="px-4 py-3">Custom</td>
+                                <td class="px-4 py-3">Client</td>
                                 <td class="px-4 py-3">
                                     <label class="inline-flex items-center cursor-pointer">
                                         <input type="checkbox" value="" class="sr-only peer" checked>
@@ -232,24 +232,13 @@
                                                 d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                                         </svg>
                                     </button>
-                                    <div id="apple-imac-27-dropdown"
-                                        class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                                            aria-labelledby="apple-imac-27-dropdown-button">
-                                            <li>
-                                                <a href="#"
-                                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"
-                                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                            </li>
-                                        </ul>
+                                    <!-- <div id="apple-imac-27-dropdown"
+                                        class=" absolute z-10 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                                         <div class="py-1">
                                             <a href="#"
-                                                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
+                                                class="block py-2 px-4 text-sm text-gray-700 hover:bg-red-300 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </td>
                             </tr>
                             } @empty {
