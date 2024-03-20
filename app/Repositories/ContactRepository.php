@@ -18,7 +18,7 @@ class ContactRepository
 
     public function getContactById($id) : Contact
     {
-        return Contact::findOrFail($id)->with('contactInfo')->first();
+        return Contact::where('id', $id)->with('contactInfo')->first();
     }
 
     public function getAllContacts()
