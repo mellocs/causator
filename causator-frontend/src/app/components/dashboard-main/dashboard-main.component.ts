@@ -2,14 +2,13 @@ import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet, Router, ActivatedRoute } from '@angular/router';
+import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet, ActivatedRoute, Router } from '@angular/router';
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { ContactsComponent } from '../contacts/contacts.component';
-import { Observable } from 'rxjs';
 import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-account',
+  selector: 'app-dashboard-main',
   standalone: true,
   imports: [
     RouterModule,
@@ -25,10 +24,10 @@ import { UserService } from '../../services/user.service';
     HttpClientModule, 
     RouterOutlet
   ],
-  templateUrl: './account.component.html',
-  styleUrl: './account.component.scss'
+  templateUrl: './dashboard-main.component.html',
+  styleUrl: './dashboard-main.component.scss'
 })
-export class AccountComponent {
+export class DashboardMainComponent {
 
   user: any;
 
