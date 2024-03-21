@@ -36,6 +36,7 @@ export class EventsComponent implements OnInit {
   newEvent: string = '';
   eventData: FormGroup;
   accountData: any;
+  id: string = '1'
 
   constructor(
     private eventsService: EventsService,
@@ -43,15 +44,16 @@ export class EventsComponent implements OnInit {
     private readonly router: Router,
     private route: ActivatedRoute
   ) {
-    const alias = localStorage.getItem('alias');
+    // const alias = localStorage.getItem('alias');
 
     this.eventData = new FormGroup({
-      contactName: new FormControl(alias, [Validators.required]),
-      type: new FormControl('', [Validators.required]),
-      source: new FormControl('', [Validators.required]),
+      contactName: new FormControl('', [Validators.required]),
+      type: new FormControl(this.id, [Validators.required]),
+      source: new FormControl(this.id, [Validators.required]),
       content: new FormControl('', [Validators.required]),
     });
 
+    
     this.getAllEvents()
   }
 
@@ -73,7 +75,10 @@ export class EventsComponent implements OnInit {
   addEvent(form: FormGroupDirective): void {
     if (this.eventData) {
       this.eventsService.addNewEvent(this.eventData.value);
-      form.reset();
+      form.reset({
+        source: '1',
+        type: '1'
+      });
     } else {
       console.log('invalid events data');
     }
