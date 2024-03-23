@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, RouterLink, RouterLinkActive, Router, ActivatedRoute } from '@angular/router';
-import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
+import { HomeComponent } from '../../pages/home/home.component';
 import { UserService } from '../../services/user.service';
 import { NgFor } from '@angular/common';
 import { RolesComponent } from './roles/roles.component';
@@ -14,7 +14,7 @@ import { GroupsComponent } from './groups/groups.component';
     RouterModule,
     RouterLink,
     RouterLinkActive,
-    DashboardComponent,
+    HomeComponent,
     NgFor,
     RolesComponent,
     GroupsComponent

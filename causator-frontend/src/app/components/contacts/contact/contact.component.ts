@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet, Router, ActivatedRoute } from '@angular/router';
-import { DashboardComponent } from '../../../pages/dashboard/dashboard.component';
+import { HomeComponent } from '../../../pages/home/home.component';
 import { ContactsComponent } from '../contacts.component';
 import { UserService } from '../../../services/user.service';
 import { Observable } from 'rxjs';
@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
     RouterModule,
     RouterLink,
     RouterLinkActive,
-    DashboardComponent,
+    HomeComponent,
     NgFor,
     ContactsComponent,
     FormsModule,

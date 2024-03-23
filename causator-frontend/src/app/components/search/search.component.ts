@@ -2,18 +2,19 @@ import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
+import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet, ActivatedRoute, Router } from '@angular/router';
+import { HomeComponent } from '../../pages/home/home.component';
 import { ContactsComponent } from '../contacts/contacts.component';
+import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-objectives',
+  selector: 'app-search',
   standalone: true,
   imports: [
     RouterModule,
     RouterLink,
     RouterLinkActive,
-    DashboardComponent,
+    HomeComponent,
     NgFor,
     ContactsComponent,
     FormsModule,
@@ -23,9 +24,11 @@ import { ContactsComponent } from '../contacts/contacts.component';
     HttpClientModule, 
     RouterOutlet
   ],
-  templateUrl: './objectives.component.html',
-  styleUrl: './objectives.component.scss'
+  templateUrl: './search.component.html',
+  styleUrl: './search.component.scss',
 })
-export class ObjectivesComponent {
+export class SearchComponent {
+
+  
 
 }

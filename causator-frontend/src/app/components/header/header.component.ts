@@ -16,7 +16,6 @@ import { AuthService } from '../../services/auth.service';
     RouterLinkActive
   ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
 

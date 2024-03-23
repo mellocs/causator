@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterLinkActive, RouterModule, Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { NgFor } from '@angular/common';
-import { DashboardComponent } from '../../../pages/dashboard/dashboard.component';
+import { HomeComponent } from '../../../pages/home/home.component';
 import { ContactsComponent } from '../contacts.component';
 
 @Component({
@@ -12,7 +12,7 @@ import { ContactsComponent } from '../contacts.component';
     RouterModule,
     RouterLink,
     RouterLinkActive,
-    DashboardComponent,
+    HomeComponent,
     NgFor,
     ContactsComponent
   ],

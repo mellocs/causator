@@ -60,7 +60,7 @@ export class AuthService {
         .subscribe((res: any) => {
             this.accountData = res;
             this.isAuthSig.set(true)
-            this.router.navigate(['dashboard']);
+            this.router.navigate(['home']);
             localStorage.setItem('auth_token', res.token);
             const alias = res.contact.alias;
             localStorage.setItem('alias', alias);

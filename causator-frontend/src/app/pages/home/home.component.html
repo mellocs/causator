@@ -1,19 +1,224 @@
-<div class="grid grid-cols-1 place-items-center">
-    <h1 class="text-3xl font-bold m-6">
-        What is Causality
-    </h1>
-    <p>
-        Causality is an influence by which one event, process, state, or object (a cause) contributes to the production of another event, process, state, or object (an effect) where the cause is partly responsible for the effect, and the effect is partly dependent on the cause. In general, a process has many causes,[1] which are also said to be causal factors for it, and all lie in its past. An effect can in turn be a cause of, or causal factor for, many other effects, which all lie in its future. Some writers have held that causality is metaphysically prior to notions of time and space.
-    </p>
-    <p>
-        Causality is an abstraction that indicates how the world progresses.[5] As such a basic concept, it is more apt as an explanation of other concepts of progression than as something to be explained by others more basic. The concept is like those of agency and efficacy. For this reason, a leap of intuition may be needed to grasp it.` Accordingly, causality is implicit in the logic and structure of ordinary language,[8] as well as explicit in the language of scientific causal notation.
-    </p>
-    <p>
-        In English studies of Aristotelian philosophy, the word "cause" is used as a specialized technical term, the translation of Aristotle's term αἰτία, by which Aristotle meant "explanation" or "answer to a 'why' question". Aristotle categorized the four types of answers as material, formal, efficient, and final "causes". In this case, the "cause" is the explanans for the explanandum, and failure to recognize that different kinds of "cause" are being considered can lead to futile debate. Of Aristotle's four explanatory modes, the one nearest to the concerns of the present article is the "efficient" one.
-    </p>
+<app-search class="z-20"></app-search>
+<aside id="separator-sidebar" class="fixed top-0 bottom-0 w-72 min-h-full transition-transform -translate-x-full sm:translate-x-0 z-10"
+    aria-label="Sidebar">
+    <div class="px-3 py-4 overflow-y-auto bg-indigo-600 min-h-full">
+        <ul class="space-y-2 font-normal font-nunito">
+            <li>
+                <a routerLink="main"
+                    class="flex items-center p-2 text-indigo-200 rounded-lg hover:bg-indigo-700 group hover:text-white">
+                    <svg class="flex-shrink-0 w-6 h-6 text-indigo-200 transition duration-75 group-hover:text-white"
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
+                    </svg>
+                    <span class="ms-3">Home</span>
+                </a>
+            </li>
 
-    <img class="w-1/3 rounded-lg m-2" src="https://currentpub.com/wp-content/uploads/2015/12/66ab7-cause2band2beffect.jpg" alt="image">
 
-</div>
+            <li>
+                <button type="button" (click)="openContacts()" class="flex items-center p-2 w-full text-base font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  " aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
+                    <svg class="flex-shrink-0 w-5 h-5 text-indigo-200 transition duration-75  group-hover:text-white "
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                        <path
+                            d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
+                    </svg>
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap">Contacts</span>
+                    <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+                @if(isOpenContacts) {
+                    <ul id="dropdown-pages" class=" py-2 space-y-2">
+                        <li>
+                            <a routerLink="contacts" class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">New</a>
+                        </li>
+                        <li>
+                            <a routerLink="contacts" class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Roles</a>
+                        </li>
+                        <li>
+                            <button type="button" (click)="openContactsGroups()" class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  " aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
+                                <span class="flex-1 text-left whitespace-nowrap">Groups</span>
+                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            </button>
+                            @if(isOpenContactsGroups) {
+                            <ul class=" pt-2 space-y-2">
+                                <li>
+                                    <a href="#" class="flex items-center p-1 pl-16 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  "> System</a>
+                                </li>
+                                <li>
+                                    <button type="button" (click)="openContactsGroupsCustom()" class="flex items-center p-1 pl-16 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  " aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
+                                        <span class="flex-1 text-left whitespace-nowrap">Custom</span>
+                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                    </button>
+                                    @if(isOpenContactsGroupsCustom) {
+                                    <ul class=" pt-2 space-y-2">
+                                        <li>
+                                            <a href="#" class="flex items-center p-1 pl-20 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  "> Roles</a>
+                                        </li>
+                                    </ul>
+                                    }
+                                </li>
+                            </ul>
+                            }
+                        </li>
+                    </ul>
+                }
+            </li>
+            <li>
+                <a routerLink="events"
+                    class="flex items-center p-2 text-indigo-200 rounded-lg  hover:bg-indigo-700  group hover:text-white">
+                    <svg class="flex-shrink-0 w-6 h-6 text-indigo-200 transition duration-75  group-hover:text-white "
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 10h16M8 14h8m-4-7V4M7 7V4m10 3V4M5 20h14c.6 0 1-.4 1-1V7c0-.6-.4-1-1-1H5a1 1 0 0 0-1 1v12c0 .6.4 1 1 1Z" />
+                    </svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Events</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink="notifications"
+                    class="flex items-center p-2 text-indigo-200 rounded-lg  hover:bg-indigo-700  group hover:text-white">
+                    <svg class="flex-shrink-0 w-5 h-5 text-indigo-200 transition duration-75  group-hover:text-white "
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Notification</span>
+                    <span
+                        class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full  ">3</span>
+                </a>
+            </li>
+            
+            <li>
+                <a routerLink="contacts"
+                    class="flex items-center p-2 text-indigo-200 rounded-lg  hover:bg-indigo-700  group hover:text-white">
+                    <svg class="flex-shrink-0 w-5 h-5 text-indigo-200 transition duration-75  group-hover:text-white "
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                        <path
+                            d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
+                    </svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Contacts</span>
+                </a>
+            </li>
+            <li>
+                <button type="button" (click)="openProcess()"
+                    class="flex items-center p-2 w-full text-base font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700 hover:text-white "
+                    aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
+                    <svg class="flex-shrink-0 w-5 h-5 text-indigo-200 transition duration-75  group-hover:text-white "
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                        <path d="M18 0H6a2 2 0 0 0-2 2h14v12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Z" />
+                        <path
+                            d="M14 4H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2ZM2 16v-6h12v6H2Z" />
+                    </svg>
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap hover:text-white">Process</span>
+                    <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                @if(isOpenProcess) {
+                <ul id="dropdown-pages" class=" py-2 space-y-2">
+                    <li>
+                        <a href="#"
+                            class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Warning</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">New</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Types</a>
+                    </li>
+                    <li>
+                        <button type="button" (click)="openProcessItem()"
+                            class="flex items-center p-1 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  "
+                            aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
+                            <span class="flex-1 ml-9 text-left whitespace-nowrap">Roles</span>
+                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                        @if(isOpenProcessItem) {
+                        <ul class=" pt-2 space-y-2">
+                            <li>
+                                <a href="#"
+                                    class="flex items-center p-1 pl-16 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">
+                                    Types</a>
+                            </li>
+                        </ul>
+                        }
+                    </li>
+                </ul>
+                }
+
+            </li>
+            <li>
+                <a routerLink="jobs"
+                    class="flex items-center p-2 text-indigo-200 rounded-lg  hover:bg-indigo-700  group hover:text-white">
+                    <svg class="flex-shrink-0 w-6 h-6 text-indigo-200 transition duration-75  group-hover:text-white "
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                            d="M2 6c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6Zm5 2a1 1 0 0 0 0 2 1 1 0 1 0 0-2Zm4 0a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-4 3a1 1 0 1 0 0 2 1 1 0 1 0 0-2Zm4 0a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-4 3a1 1 0 1 0 0 2 1 1 0 1 0 0-2Zm4 0a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Jobs</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 ">
+            <li>
+                <button type="button" (click)="openAccount()" class="flex items-center p-2 w-full text-base font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  " aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
+                    <svg class="flex-shrink-0 w-6 h-6 text-indigo-200 transition duration-75  group-hover:text-white "
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a9 9 0 0 0 5-1.5 4 4 0 0 0-4-3.5h-2a4 4 0 0 0-4 3.5 9 9 0 0 0 5 1.5Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap">Account</span>
+                    <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+                @if(isOpenAccount) {
+                    <ul id="dropdown-pages" class=" py-2 space-y-2">
+                        <li>
+                            <a routerLink="/home/account" class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">My Profile</a>
+                        </li>
+                        <li>
+                            <button (click)="logout()"
+                                class="flex items-center p-1 pl-11 w-full text-center text-sm font-normal text-white rounded-lg transition duration-75 group bg-red-600 hover:bg-red-700">Log
+                                out</button>
+                        </li>
+                    </ul>
+                }
+            </li>
+
+            <!-- <li>
+                <a routerLink="/dashboard/account"
+                    class="flex items-center p-2 text-indigo-200 transition duration-75 rounded-lg hover:bg-indigo-700   group hover:text-white">
+                    <svg class="flex-shrink-0 w-6 h-6 text-indigo-200 transition duration-75  group-hover:text-white "
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a9 9 0 0 0 5-1.5 4 4 0 0 0-4-3.5h-2a4 4 0 0 0-4 3.5 9 9 0 0 0 5 1.5Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                    <span class="ms-3">Account</span>
+                </a>
+            </li>
+            <button (click)="logout()"
+                class="bg-red-500 hover:bg-red-700 text-white rounded transition duration-300 ease-in-out p-1 w-64">Log
+                out</button> -->
+
+        </ul>
+    </div>
+</aside>
 
 
+
+<router-outlet></router-outlet>
+
+
+
+            

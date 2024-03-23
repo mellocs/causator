@@ -3,9 +3,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet, ActivatedRoute, Router } from '@angular/router';
-import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
+import { HomeComponent } from '../../pages/home/home.component';
 import { ContactsComponent } from '../contacts/contacts.component';
 import { UserService } from '../../services/user.service';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-dashboard-main',
@@ -14,7 +15,7 @@ import { UserService } from '../../services/user.service';
     RouterModule,
     RouterLink,
     RouterLinkActive,
-    DashboardComponent,
+    HomeComponent,
     NgFor,
     ContactsComponent,
     FormsModule,
@@ -22,10 +23,10 @@ import { UserService } from '../../services/user.service';
     NgIf,
     CommonModule, 
     HttpClientModule, 
-    RouterOutlet
+    RouterOutlet,
+    SearchComponent
   ],
   templateUrl: './dashboard-main.component.html',
-  styleUrl: './dashboard-main.component.scss'
 })
 export class DashboardMainComponent {
 

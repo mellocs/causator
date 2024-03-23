@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
+import { HomeComponent } from '../../pages/home/home.component';
 import { ContactsComponent } from '../contacts/contacts.component';
 
 @Component({
@@ -13,7 +13,7 @@ import { ContactsComponent } from '../contacts/contacts.component';
     RouterModule,
     RouterLink,
     RouterLinkActive,
-    DashboardComponent,
+    HomeComponent,
     NgFor,
     ContactsComponent,
     FormsModule,

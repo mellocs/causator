@@ -5,6 +5,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { RegistrationComponent } from '../registration/registration.component';
 import { AuthService } from '../../services/auth.service';
+import { HeaderComponent } from '../../components/header/header.component';
 
 @Component({
   selector: 'app-login',
@@ -17,10 +18,10 @@ import { AuthService } from '../../services/auth.service';
     RouterLink, 
     RouterModule, 
     RouterOutlet,
-    RegistrationComponent
+    RegistrationComponent,
+    HeaderComponent
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   userData: FormGroup

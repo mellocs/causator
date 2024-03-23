@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
+import { HomeComponent } from '../../pages/home/home.component';
 import { ContactsComponent } from '../contacts/contacts.component';
 
 
@@ -16,7 +16,7 @@ import { ContactsComponent } from '../contacts/contacts.component';
     RouterModule,
     RouterLink,
     RouterLinkActive,
-    DashboardComponent,
+    HomeComponent,
     NgFor,
     ContactsComponent,
     FormsModule,

@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet, ActivatedRoute, Router } from '@angular/router';
-import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
+import { HomeComponent } from '../../pages/home/home.component';
 import { ContactsComponent } from '../contacts/contacts.component';
 import { Observable } from 'rxjs';
 import { EventsService } from '../../services/event.service';
@@ -16,7 +16,7 @@ import { AuthService } from '../../services/auth.service';
     RouterModule,
     RouterLink,
     RouterLinkActive,
-    DashboardComponent,
+    HomeComponent,
     NgFor,
     ContactsComponent,
     FormsModule,
@@ -27,7 +27,6 @@ import { AuthService } from '../../services/auth.service';
     RouterOutlet,
   ],
   templateUrl: './events.component.html',
-  styleUrl: './events.component.scss',
 })
 export class EventsComponent implements OnInit {
 

@@ -1,7 +1,7 @@
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, RouterLink, RouterLinkActive, ActivatedRoute, Router, RouterOutlet } from '@angular/router';
-import { DashboardComponent } from '../../../pages/dashboard/dashboard.component';
+import { HomeComponent } from '../../../pages/home/home.component';
 import { ContactsComponent } from '../contacts.component';
 import { UserService } from '../../../services/user.service';
 import { Observable, Subscription, switchMap } from 'rxjs';
@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     RouterLink,
     RouterLinkActive,
-    DashboardComponent,
+    HomeComponent,
     NgFor,
     ContactsComponent,
     FormsModule,
