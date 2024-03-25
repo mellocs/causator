@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { HomeComponent } from '../../pages/home/home.component';
-import { ContactsComponent } from '../contacts/contacts.component';
 
 @Component({
   selector: 'app-notifications',
@@ -15,7 +14,6 @@ import { ContactsComponent } from '../contacts/contacts.component';
     RouterLinkActive,
     HomeComponent,
     NgFor,
-    ContactsComponent,
     FormsModule,
     ReactiveFormsModule,
     NgIf,
@@ -24,7 +22,6 @@ import { ContactsComponent } from '../contacts/contacts.component';
     RouterOutlet
   ],
   templateUrl: './notifications.component.html',
-  styleUrl: './notifications.component.scss'
 })
 export class NotificationsComponent {
 

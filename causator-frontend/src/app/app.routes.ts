@@ -3,15 +3,15 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { authGuard } from './guards/auth.guard';
-import { ContactsComponent } from './components/contacts/contacts.component';
+import { ContactComponent } from './components/contacts-collection/contact/contact.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { EventsComponent } from './components/events/events.component';
 import { TasksComponent } from './components/tasks/tasks.component';
-import { RolesComponent } from './components/contacts/roles/roles.component';
-import { RolesItemComponent } from './components/contacts/roles-contacts/roles-item.component';
-import { ContactComponent } from './components/contacts/contact/contact.component';
+import { RolesComponent } from './components/contacts-collection/roles/roles.component';
+import { RolesItemComponent } from './components/contacts-collection/roles-contacts/roles-contacts.component';
 import { AccountComponent } from './components/account/account.component';
 import { DashboardMainComponent } from './components/dashboard-main/dashboard-main.component';
+import { GroupsComponent } from './components/contacts-collection/groups/groups.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full',},
@@ -22,9 +22,9 @@ export const routes: Routes = [
         component: HomeComponent,
         children: [
             {
-                path: 'contacts',
-                component: ContactsComponent,
-                title: 'Contacts'
+                path: 'contacts/roles',
+                component: RolesComponent,
+                title: 'Roles'
                 // children: [
                 //     {
                 //         path: 'role/:id', 
@@ -34,7 +34,7 @@ export const routes: Routes = [
                 // ]
             },
             {
-                path: 'contacts/role/:id',
+                path: 'contacts/roles/:id',
                 component: RolesItemComponent, 
                 title: 'RolesItem'
             },
@@ -43,7 +43,11 @@ export const routes: Routes = [
                 component: ContactComponent,
                 title: 'ContactComponent'
             },
-            
+            {
+                path: 'contacts/groups',
+                component: GroupsComponent, 
+                title: 'Groups'
+            },
             {
                 path: 'notifications',
                 component: NotificationsComponent,

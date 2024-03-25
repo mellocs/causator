@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet, Router, ActivatedRoute } from '@angular/router';
 import { HomeComponent } from '../../pages/home/home.component';
-import { ContactsComponent } from '../contacts/contacts.component';
 import { Observable } from 'rxjs';
 import { UserService } from '../../services/user.service';
 
@@ -17,7 +16,6 @@ import { UserService } from '../../services/user.service';
     RouterLinkActive,
     HomeComponent,
     NgFor,
-    ContactsComponent,
     FormsModule,
     ReactiveFormsModule,
     NgIf,
@@ -26,7 +24,6 @@ import { UserService } from '../../services/user.service';
     RouterOutlet
   ],
   templateUrl: './account.component.html',
-  styleUrl: './account.component.scss'
 })
 export class AccountComponent {
 

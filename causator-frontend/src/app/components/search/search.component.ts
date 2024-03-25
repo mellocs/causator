@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet, ActivatedRoute, Router } from '@angular/router';
 import { HomeComponent } from '../../pages/home/home.component';
-import { ContactsComponent } from '../contacts/contacts.component';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -16,7 +15,6 @@ import { UserService } from '../../services/user.service';
     RouterLinkActive,
     HomeComponent,
     NgFor,
-    ContactsComponent,
     FormsModule,
     ReactiveFormsModule,
     NgIf,

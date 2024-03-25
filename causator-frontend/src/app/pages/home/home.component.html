@@ -2,6 +2,27 @@
 <aside id="separator-sidebar" class="fixed top-0 bottom-0 w-72 min-h-full transition-transform -translate-x-full sm:translate-x-0 z-10"
     aria-label="Sidebar">
     <div class="px-3 py-4 overflow-y-auto bg-indigo-600 min-h-full">
+        <ul class="pb-4 mb-4 space-y-1 font-medium border-b border-gray-200 ">
+            <li>
+                <button type="button" (click)="openAccount()" class="flex items-center p-2 w-full text-base font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  " aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
+                    <img class="w-8" src="../../../assets/account.png" alt="account">
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap">Account</span>
+                    <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+                @if(isOpenAccount) {
+                    <ul id="dropdown-pages" class=" py-2 space-y-2">
+                        <li>
+                            <a routerLink="/home/account" class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">My Profile</a>
+                        </li>
+                        <li>
+                            <button (click)="logout()"
+                                class="flex items-center p-1 pl-11 w-full text-center text-sm font-normal text-white rounded-lg transition duration-75 group bg-red-600 hover:bg-red-700">Log
+                                out</button>
+                        </li>
+                    </ul>
+                }
+            </li>
+        </ul>
         <ul class="space-y-2 font-normal font-nunito">
             <li>
                 <a routerLink="main"
@@ -30,36 +51,13 @@
                 @if(isOpenContacts) {
                     <ul id="dropdown-pages" class=" py-2 space-y-2">
                         <li>
-                            <a routerLink="contacts" class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">New</a>
+                            <a routerLink="contacts/roles" class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">New</a>
                         </li>
                         <li>
-                            <a routerLink="contacts" class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Roles</a>
+                            <a routerLink="contacts/roles" class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Roles</a>
                         </li>
                         <li>
-                            <button type="button" (click)="openContactsGroups()" class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  " aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
-                                <span class="flex-1 text-left whitespace-nowrap">Groups</span>
-                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                            </button>
-                            @if(isOpenContactsGroups) {
-                            <ul class=" pt-2 space-y-2">
-                                <li>
-                                    <a href="#" class="flex items-center p-1 pl-16 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  "> System</a>
-                                </li>
-                                <li>
-                                    <button type="button" (click)="openContactsGroupsCustom()" class="flex items-center p-1 pl-16 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  " aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
-                                        <span class="flex-1 text-left whitespace-nowrap">Custom</span>
-                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                    </button>
-                                    @if(isOpenContactsGroupsCustom) {
-                                    <ul class=" pt-2 space-y-2">
-                                        <li>
-                                            <a href="#" class="flex items-center p-1 pl-20 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  "> Roles</a>
-                                        </li>
-                                    </ul>
-                                    }
-                                </li>
-                            </ul>
-                            }
+                            <a routerLink="contacts/groups" class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Groups</a>
                         </li>
                     </ul>
                 }
@@ -88,18 +86,6 @@
                         class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full  ">3</span>
                 </a>
             </li>
-            
-            <li>
-                <a routerLink="contacts"
-                    class="flex items-center p-2 text-indigo-200 rounded-lg  hover:bg-indigo-700  group hover:text-white">
-                    <svg class="flex-shrink-0 w-5 h-5 text-indigo-200 transition duration-75  group-hover:text-white "
-                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                        <path
-                            d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
-                    </svg>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Contacts</span>
-                </a>
-            </li>
             <li>
                 <button type="button" (click)="openProcess()"
                     class="flex items-center p-2 w-full text-base font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700 hover:text-white "
@@ -122,96 +108,111 @@
                 <ul id="dropdown-pages" class=" py-2 space-y-2">
                     <li>
                         <a href="#"
-                            class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Warning</a>
+                            class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Waiting</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">New</a>
+                            class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">System</a>
                     </li>
                     <li>
                         <a href="#"
                             class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Types</a>
-                    </li>
-                    <li>
-                        <button type="button" (click)="openProcessItem()"
-                            class="flex items-center p-1 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  "
-                            aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
-                            <span class="flex-1 ml-9 text-left whitespace-nowrap">Roles</span>
-                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                        @if(isOpenProcessItem) {
-                        <ul class=" pt-2 space-y-2">
-                            <li>
-                                <a href="#"
-                                    class="flex items-center p-1 pl-16 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">
-                                    Types</a>
-                            </li>
-                        </ul>
-                        }
                     </li>
                 </ul>
                 }
 
             </li>
             <li>
-                <a routerLink="jobs"
-                    class="flex items-center p-2 text-indigo-200 rounded-lg  hover:bg-indigo-700  group hover:text-white">
+                <button type="button" (click)="openJobs()"
+                    class="flex items-center p-2 w-full text-base font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700 hover:text-white "
+                    aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
                     <svg class="flex-shrink-0 w-6 h-6 text-indigo-200 transition duration-75  group-hover:text-white "
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                         <path fill-rule="evenodd"
                             d="M2 6c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6Zm5 2a1 1 0 0 0 0 2 1 1 0 1 0 0-2Zm4 0a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-4 3a1 1 0 1 0 0 2 1 1 0 1 0 0-2Zm4 0a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-4 3a1 1 0 1 0 0 2 1 1 0 1 0 0-2Zm4 0a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Z"
                             clip-rule="evenodd" />
                     </svg>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Jobs</span>
-                </a>
-            </li>
-        </ul>
-        <ul class="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 ">
-            <li>
-                <button type="button" (click)="openAccount()" class="flex items-center p-2 w-full text-base font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  " aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
-                    <svg class="flex-shrink-0 w-6 h-6 text-indigo-200 transition duration-75  group-hover:text-white "
-                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a9 9 0 0 0 5-1.5 4 4 0 0 0-4-3.5h-2a4 4 0 0 0-4 3.5 9 9 0 0 0 5 1.5Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap hover:text-white">Jobs</span>
+                    <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
                     </svg>
-                    <span class="flex-1 ml-3 text-left whitespace-nowrap">Account</span>
-                    <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                 </button>
-                @if(isOpenAccount) {
-                    <ul id="dropdown-pages" class=" py-2 space-y-2">
-                        <li>
-                            <a routerLink="/home/account" class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">My Profile</a>
-                        </li>
-                        <li>
-                            <button (click)="logout()"
-                                class="flex items-center p-1 pl-11 w-full text-center text-sm font-normal text-white rounded-lg transition duration-75 group bg-red-600 hover:bg-red-700">Log
-                                out</button>
-                        </li>
-                    </ul>
+                @if(isOpenJobs) {
+                <ul id="dropdown-pages" class=" py-2 space-y-2">
+                    <li>
+                        <a href=""
+                            class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Waiting</a>
+                    </li>
+                    <li>
+                        <a href=""
+                            class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">New</a>
+                    </li>
+                    <li>
+                        <a href=""
+                            class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Types</a>
+                    </li>
+                    <li>
+                        <a href=""
+                            class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Groups</a>
+                    </li>
+                </ul>
                 }
+
             </li>
 
-            <!-- <li>
-                <a routerLink="/dashboard/account"
-                    class="flex items-center p-2 text-indigo-200 transition duration-75 rounded-lg hover:bg-indigo-700   group hover:text-white">
-                    <svg class="flex-shrink-0 w-6 h-6 text-indigo-200 transition duration-75  group-hover:text-white "
-                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a9 9 0 0 0 5-1.5 4 4 0 0 0-4-3.5h-2a4 4 0 0 0-4 3.5 9 9 0 0 0 5 1.5Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            <li>
+                <button type="button" (click)="openItems()"
+                    class="flex items-center p-2 w-full text-base font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700 hover:text-white "
+                    aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
+                    <svg class="flex-shrink-0 w-6 h-6 text-indigo-200 transition duration-75  group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M5.005 10.19a1 1 0 0 1 1 1v.233l5.998 3.464L18 11.423v-.232a1 1 0 1 1 2 0V12a1 1 0 0 1-.5.866l-6.997 4.042a1 1 0 0 1-1 0l-6.998-4.042a1 1 0 0 1-.5-.866v-.81a1 1 0 0 1 1-1ZM5 15.15a1 1 0 0 1 1 1v.232l5.997 3.464 5.998-3.464v-.232a1 1 0 1 1 2 0v.81a1 1 0 0 1-.5.865l-6.998 4.042a1 1 0 0 1-1 0L4.5 17.824a1 1 0 0 1-.5-.866v-.81a1 1 0 0 1 1-1Z" clip-rule="evenodd"/>
+                        <path d="M12.503 2.134a1 1 0 0 0-1 0L4.501 6.17A1 1 0 0 0 4.5 7.902l7.002 4.047a1 1 0 0 0 1 0l6.998-4.04a1 1 0 0 0 0-1.732l-6.997-4.042Z"/>
+                      </svg>                                            
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap hover:text-white">Items</span>
+                    <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
                     </svg>
-                    <span class="ms-3">Account</span>
+                </button>
+                @if(isOpenItems) {
+                <ul id="dropdown-pages" class=" py-2 space-y-2">
+                    <li>
+                        <a href=""
+                            class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Warning</a>
+                    </li>
+                    <li>
+                        <a href=""
+                            class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">New</a>
+                    </li>
+                    <li>
+                        <a href=""
+                            class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Types</a>
+                    </li>
+                    <li>
+                        <a href=""
+                            class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Groups</a>
+                    </li>
+                </ul>
+                }
+
+            </li>
+            <li>
+                <a routerLink="main"
+                    class="flex items-center p-2 text-indigo-200 rounded-lg hover:bg-indigo-700 group hover:text-white">
+                    <svg class="flex-shrink-0 w-6 h-6 text-indigo-200 transition duration-75  group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M4.857 3A1.857 1.857 0 0 0 3 4.857v4.286C3 10.169 3.831 11 4.857 11h4.286A1.857 1.857 0 0 0 11 9.143V4.857A1.857 1.857 0 0 0 9.143 3H4.857Zm10 0A1.857 1.857 0 0 0 13 4.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 21 9.143V4.857A1.857 1.857 0 0 0 19.143 3h-4.286Zm-10 10A1.857 1.857 0 0 0 3 14.857v4.286C3 20.169 3.831 21 4.857 21h4.286A1.857 1.857 0 0 0 11 19.143v-4.286A1.857 1.857 0 0 0 9.143 13H4.857ZM18 14a1 1 0 1 0-2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0-2h-2v-2Z" clip-rule="evenodd"/>
+                      </svg>                      
+                    <span class="ms-3">Dashboards</span>
                 </a>
             </li>
-            <button (click)="logout()"
-                class="bg-red-500 hover:bg-red-700 text-white rounded transition duration-300 ease-in-out p-1 w-64">Log
-                out</button> -->
 
         </ul>
+        
     </div>
 </aside>
 

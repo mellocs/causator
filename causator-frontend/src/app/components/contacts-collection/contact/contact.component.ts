@@ -4,9 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet, Router, ActivatedRoute } from '@angular/router';
 import { HomeComponent } from '../../../pages/home/home.component';
-import { ContactsComponent } from '../contacts.component';
 import { UserService } from '../../../services/user.service';
 import { Observable } from 'rxjs';
+import { IContactInfo } from '../../../interfaces/contact-info.unterface';
 
 
 @Component({
@@ -18,7 +18,6 @@ import { Observable } from 'rxjs';
     RouterLinkActive,
     HomeComponent,
     NgFor,
-    ContactsComponent,
     FormsModule,
     ReactiveFormsModule,
     NgIf,
@@ -27,11 +26,10 @@ import { Observable } from 'rxjs';
     RouterOutlet
   ],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
 })
 export class ContactComponent{
 
-  user!: Observable<UserService[]>;
+  user: any;
   UserId!: Observable<UserService[]>;
 
   constructor(
@@ -49,10 +47,10 @@ export class ContactComponent{
 
       this.userService.getContactsById(id).subscribe(
         (res: any) => {
+          console.log(res);
+          
+          this.user = res.contact;
 
-          console.log(111)
-          console.log(res)
-          // this.user = res.contacts;
         },
         (error: any) => {
           console.error('Error loading contacts:', error);
@@ -60,6 +58,7 @@ export class ContactComponent{
       );
     });
   }
+  
 
 }
 

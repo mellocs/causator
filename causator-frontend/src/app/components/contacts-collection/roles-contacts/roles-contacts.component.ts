@@ -2,14 +2,13 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, RouterLink, RouterLinkActive, ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { HomeComponent } from '../../../pages/home/home.component';
-import { ContactsComponent } from '../contacts.component';
 import { UserService } from '../../../services/user.service';
 import { Observable, Subscription, switchMap } from 'rxjs';
 import { FormControl, FormGroup, FormGroupDirective, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
-  selector: 'app-roles-item',
+  selector: 'app-roles-contacts',
   standalone: true,
   imports: [
     RouterModule,
@@ -17,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
     RouterLinkActive,
     HomeComponent,
     NgFor,
-    ContactsComponent,
     FormsModule,
     ReactiveFormsModule,
     NgIf,
@@ -25,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule, 
     RouterOutlet
   ],
-  templateUrl: './roles-item.component.html',
+  templateUrl: './roles-contacts.component.html',
 })
 export class RolesItemComponent {
 
@@ -84,9 +82,7 @@ export class RolesItemComponent {
         (res: any) => {
           this.role = res.roles[id-1].name;
           this.roleId = res.roles[id-1].id;
-          this.userData.get('roleId')?.setValue(this.roleId);
-          console.log(this.roleId);
-          
+          this.userData.get('roleId')?.setValue(this.roleId);          
         },
         (error: any) => {
           console.error('Error loading roles:', error);

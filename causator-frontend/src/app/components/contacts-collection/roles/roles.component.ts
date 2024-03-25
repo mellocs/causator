@@ -3,7 +3,6 @@ import { ActivatedRoute, RouterLink, RouterLinkActive, RouterModule, Router } fr
 import { UserService } from '../../../services/user.service';
 import { NgFor } from '@angular/common';
 import { HomeComponent } from '../../../pages/home/home.component';
-import { ContactsComponent } from '../contacts.component';
 
 @Component({
   selector: 'app-roles',
@@ -14,10 +13,8 @@ import { ContactsComponent } from '../contacts.component';
     RouterLinkActive,
     HomeComponent,
     NgFor,
-    ContactsComponent
   ],
   templateUrl: './roles.component.html',
-  styleUrl: './roles.component.scss'
 })
 export class RolesComponent implements OnInit {
 

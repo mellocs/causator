@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
-import { ContactsComponent } from '../../components/contacts/contacts.component';
 import { UserService } from '../../services/user.service';
 import { TasksComponent } from '../../components/tasks/tasks.component';
 import { AuthService } from '../../services/auth.service';
-import { RolesComponent } from '../../components/contacts/roles/roles.component';
+import { RolesComponent } from '../../components/contacts-collection/roles/roles.component';
 import { SearchComponent } from '../../components/search/search.component';
 
 @Component({
@@ -14,7 +13,6 @@ import { SearchComponent } from '../../components/search/search.component';
     RouterModule,
     RouterLink,
     RouterLinkActive,
-    ContactsComponent,
     TasksComponent,
     RolesComponent,
     SearchComponent
@@ -30,8 +28,10 @@ export class HomeComponent {
   public isOpenProcessItem:boolean = false;
 
   public isOpenContacts:boolean;
-  public isOpenContactsGroups:boolean;
-  public isOpenContactsGroupsCustom:boolean;
+
+  public isOpenJobs:boolean = false;
+
+  public isOpenItems:boolean = false;
   
 
   constructor (
@@ -39,32 +39,30 @@ export class HomeComponent {
     public authService: AuthService
     ) {
     this.isOpenContacts = false;
-    this.isOpenContactsGroups = false;
-    this.isOpenContactsGroupsCustom = false;
   }
 
 
   openProcess() {
     this.isOpenProcess = !this.isOpenProcess;
-
   }
 
   openProcessItem() {
     this.isOpenProcessItem = !this.isOpenProcessItem;
+  }
 
+  openJobs() {
+    this.isOpenJobs = !this.isOpenJobs;
+  }
+
+  openItems() {
+    this.isOpenItems = !this.isOpenItems;
   }
 
   openContacts() {
     this.isOpenContacts = !this.isOpenContacts;
   }
 
-  openContactsGroups() {
-    this.isOpenContactsGroups = !this.isOpenContactsGroups;
-  }
 
-  openContactsGroupsCustom() {
-    this.isOpenContactsGroupsCustom = !this.isOpenContactsGroupsCustom;
-  }
 
   openAccount() {
     this.isOpenAccount = !this.isOpenAccount;

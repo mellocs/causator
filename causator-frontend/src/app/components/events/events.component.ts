@@ -4,7 +4,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet, ActivatedRoute, Router } from '@angular/router';
 import { HomeComponent } from '../../pages/home/home.component';
-import { ContactsComponent } from '../contacts/contacts.component';
 import { Observable } from 'rxjs';
 import { EventsService } from '../../services/event.service';
 import { AuthService } from '../../services/auth.service';
@@ -18,7 +17,6 @@ import { AuthService } from '../../services/auth.service';
     RouterLinkActive,
     HomeComponent,
     NgFor,
-    ContactsComponent,
     FormsModule,
     ReactiveFormsModule,
     NgIf,
