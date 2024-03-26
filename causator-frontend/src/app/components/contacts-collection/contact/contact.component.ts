@@ -30,6 +30,7 @@ import { IContactInfo } from '../../../interfaces/contact-info.unterface';
 export class ContactComponent{
 
   user: any;
+  userInfo: any;
   UserId!: Observable<UserService[]>;
 
   constructor(
@@ -50,6 +51,7 @@ export class ContactComponent{
           console.log(res);
           
           this.user = res.contact;
+          this.userInfo = res.contact.contact_info[0];
 
         },
         (error: any) => {
