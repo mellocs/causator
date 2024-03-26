@@ -23,9 +23,9 @@ export class HomeComponent {
 
 
   userData:any
-  public isOpenProcess:boolean = false;
+  public isOpenObjectives:boolean = false;
+  
   public isOpenAccount:boolean = false;
-  public isOpenProcessItem:boolean = false;
 
   public isOpenContacts:boolean;
 
@@ -42,13 +42,10 @@ export class HomeComponent {
   }
 
 
-  openProcess() {
-    this.isOpenProcess = !this.isOpenProcess;
+  openObjectives() {
+    this.isOpenObjectives = !this.isOpenObjectives;
   }
 
-  openProcessItem() {
-    this.isOpenProcessItem = !this.isOpenProcessItem;
-  }
 
   openJobs() {
     this.isOpenJobs = !this.isOpenJobs;
