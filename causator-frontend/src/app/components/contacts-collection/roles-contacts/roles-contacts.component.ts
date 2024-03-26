@@ -1,4 +1,4 @@
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf, TitleCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, RouterLink, RouterLinkActive, ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { HomeComponent } from '../../../pages/home/home.component';
@@ -27,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class RolesItemComponent {
 
-  role!: Observable<UserService[]>;
+  role!: string;
   roleId!: Observable<UserService[]>;
   roles: any[] = [];
   users: any[] = [];
