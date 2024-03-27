@@ -75,4 +75,9 @@ class ContactService
 
         return $contact;
     }
+
+    public function deleteContact($id)
+    {
+        Contact::destroy($id);
+    }
 }
