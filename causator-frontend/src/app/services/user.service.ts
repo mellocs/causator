@@ -5,6 +5,7 @@ import { IUserRole } from "../interfaces/user.interface";
 import { API_URL } from "../constants/constants";
 import { Observable, catchError, tap } from "rxjs";
 import { ToastrService } from "ngx-toastr";
+import { IContactInfo } from "../interfaces/contact-info.interface";
 
 @Injectable({
     providedIn: 'root',
@@ -18,6 +19,7 @@ export class UserService {
     idContact: any[] = [];
     currentContact: any[] = [];
     contact: any[] = [];
+    updateData: any[] = [];
     
     currentRouteParams: any;
 
@@ -72,6 +74,21 @@ export class UserService {
             tap((res: any) => this.idContact),
         )
     }
+
+
+    updateContactsById(id:string, updateData: IContactInfo) {
+        return this.http.post(`${API_URL}/api/contacts/${id}/update`, updateData)
+        .pipe(
+            catchError(err => {
+                throw new Error(err.message),
+                this.toastr.error("Something wrong!", 'Error')
+            })
+        )
+        .subscribe(res => {
+            this.toastr.success('Account updated!', 'Success!');
+        });
+    }
+
 
     addNewUser(userData: IUserRole) { 
         return this.http.post(`${API_URL}/api/contacts/create`, userData)

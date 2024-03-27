@@ -6,7 +6,7 @@ import { RouterModule, RouterLink, RouterLinkActive, RouterOutlet, Router, Activ
 import { HomeComponent } from '../../../pages/home/home.component';
 import { UserService } from '../../../services/user.service';
 import { Observable } from 'rxjs';
-import { IContactInfo } from '../../../interfaces/contact-info.unterface';
+import { IContactInfo } from '../../../interfaces/contact-info.interface';
 
 
 @Component({
@@ -32,6 +32,8 @@ export class ContactComponent{
   user: any;
   userInfo: any;
   UserId!: Observable<UserService[]>;
+  public openForm:boolean = false;
+
 
   constructor(
     private userService: UserService,
@@ -59,6 +61,14 @@ export class ContactComponent{
         }
       );
     });
+  }
+
+  showForm() {
+    this.openForm = !this.openForm;
+  }
+
+  closeForm() {
+    this.openForm = false;
   }
   
 

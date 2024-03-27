@@ -59,11 +59,8 @@ export class HomeComponent {
     this.isOpenContacts = !this.isOpenContacts;
   }
 
-
-
   openAccount() {
     this.isOpenAccount = !this.isOpenAccount;
-
   }
 
   logout() {
