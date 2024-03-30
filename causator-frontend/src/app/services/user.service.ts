@@ -142,4 +142,14 @@ export class UserService {
         )
     }
 
+    changeAccessById(id:string): Observable<any[]> {
+        return this.http.get(`${API_URL}/api/${id}/status`)
+        .pipe(
+            catchError(err => {
+                throw new Error(err.message) 
+            }),
+            tap((res: any) => {console.log(res)}),
+        )
+    }
+
 }

@@ -107,13 +107,6 @@ export class ContactComponent{
     });
     }
 
-  // updateContactById() {
-  //   this.route.params.subscribe(params => {
-  //     const id = params['id'];
-  //     this.userService.updateContactsById(id);
-  //     this.deleteModal = false;
-  //   });
-  // }
 
   showForm() {
     this.openForm = !this.openForm;
