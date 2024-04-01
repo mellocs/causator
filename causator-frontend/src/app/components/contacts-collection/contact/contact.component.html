@@ -79,16 +79,18 @@
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                     Contact id:
                                 </th>
-                                <td class="px-6 py-4">
-                                    {{userInfo.contact_id}}
-                                </td>
+                                <td class="px-6 py-4">                          
+                                    {{user.id}}
+                                </td>                                
                             </tr>
                             <tr class="bg-white border-b">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                     First name:
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{userInfo.first_name}}
+                                    @if(userInfo?.first_name != undefined) {
+                                        {{userInfo.first_name}}
+                                    }
                                 </td>
                             </tr>
                             <tr class="bg-white border-b">
@@ -96,7 +98,9 @@
                                     Last name:
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{userInfo.last_name}}
+                                    @if(userInfo?.last_name != undefined) {
+                                        {{userInfo.last_name}}
+                                    }
                                 </td>
                             </tr>
                             <tr class="bg-white border-b">
@@ -120,7 +124,9 @@
                                     Address: 
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{userInfo.address}}
+                                    @if(userInfo?.address != undefined) {
+                                        {{userInfo.address}}
+                                    }
                                 </td>
                             </tr>
                             <tr class="bg-white border-b">
@@ -128,7 +134,9 @@
                                     Phone number: 
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{userInfo.phone_number}}
+                                    @if(userInfo?.phone_number != undefined) {
+                                        {{userInfo.phone_number}}
+                                    }
                                 </td>
                             </tr>
                             <tr class="bg-white border-b">
@@ -136,7 +144,9 @@
                                     Organization: 
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{userInfo.organization}}
+                                    @if(userInfo?.organization != undefined) {
+                                        {{userInfo.organization}}
+                                    }
                                 </td>
                             </tr>
                             <tr class="bg-white">
@@ -144,7 +154,9 @@
                                     Messanger: 
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{userInfo.messenger}}
+                                    @if(userInfo?.messenger != undefined) {
+                                        {{userInfo.messenger}}
+                                    }
                                 </td>
                             </tr>
                         </tbody>
