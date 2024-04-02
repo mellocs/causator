@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 
 use App\Services\ContactService;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class ContactController extends Controller
 {
@@ -49,13 +51,17 @@ class ContactController extends Controller
     public function edit(Request $request, int $id)
     {
         $validatedRequest = $this->validate($request, [
-            'alias'         => 'string|unique:contacts,alias',
-            'first_name'    => 'string',
-            'last_name'     => 'string',
-            'address'       => 'string',
-            'phone_number'  => 'int',
-            'organization'  => 'string',
-            'messenger'     => 'string'
+            'alias'         => [
+                'string',
+                Rule::unique('contacts')->ignore($id),
+            ],
+            'first_name'    => 'nullable|string',
+            'last_name'     => 'nullable|string',
+            'address'       => 'nullable|string',
+            'phone_number'  => 'nullable|string',
+            'organization'  => 'nullable|string',
+            'messenger'     => 'nullable|string',
+            'roleId'        => 'int'
         ]);
 
         $contact = $this->contactService->editContact($validatedRequest, $id);
@@ -90,6 +96,47 @@ class ContactController extends Controller
 
         return response()->json([
            'contact' => $contact
+        ]);
+    }
+
+    public function deleteContact($id)
+    {
+        $this->contactService->deleteContact($id);
+
+        return response()->json([
+            'message' => "Contact successful deleted"
+        ]);
+    }
+
+    public function changeStatus(Request $request, int $id)
+    {
+        $status = $this->validate($request, [
+            'status' => 'string'
+        ]);
+
+        try {
+
+            $this->contactService->changeStatus($id, $status);
+
+        } catch (Exception $e) {
+
+            return response()->json([
+                'error' => 'Error with changing status'
+            ], 500);
+        }
+
+
+        return response()->json([
+            'message' => "Status successful changed"
+        ]);
+    }
+
+    public function getContactStatus(int $contactId)
+    {
+        $status = $this->contactService->getContactStatus($contactId);
+
+        return response()->json([
+            'status' => $status
         ]);
     }
 }

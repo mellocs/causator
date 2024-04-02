@@ -19,7 +19,13 @@ class ContactService
 
     public function createContact(array $contact) : Contact
     {
+
+        if (!isset($contact['roleId'])) {
+            $contact['roleId'] = 1;
+        }
+
         $newContact = Contact::create($contact);
+
 
         ContactInfo::create([
             'contact_id' => $newContact->id
@@ -57,29 +63,63 @@ class ContactService
         return $this->contactRepository->getAllContacts();
     }
 
-    public function editContact(array $contact, $id)
+    public function editContact($newContact, $id)
+    {
+        $contact = $this->contactRepository->getContactById($id);
+
+        if ($contact['alias'] != $newContact['alias']) {
+            $contact->update([
+                'alias'  => $newContact['alias']
+            ]);
+        }
+        if (ContactInfo::where('contact_id', $id)->first()) {
+            $contact->contactInfo()->update([
+                'first_name'    => $newContact['first_name'] ?? null,
+                'last_name'     => $newContact['last_name'] ?? null,
+                'address'       => $newContact['address'] ?? null,
+                'phone_number'  => $newContact['phone_number'] ?? null,
+                'organization'  => $newContact['organization'] ?? null,
+                'messenger'     => $newContact['messenger'] ?? null,
+            ]);
+        } else {
+            $contact->contactInfo()->create([
+                'first_name'    => $newContact['first_name'] ?? null,
+                'last_name'     => $newContact['last_name'] ?? null,
+                'address'       => $newContact['address'] ?? null,
+                'phone_number'  => $newContact['phone_number'] ?? null,
+                'organization'  => $newContact['organization'] ?? null,
+                'messenger'     => $newContact['messenger'] ?? null,
+            ]);
+        }
+
+
+        $contact->roles()->sync([$newContact['roleId']]);
+
+        $updatedContact = $this->contactRepository->getContactById($id);
+
+        return $updatedContact;
+    }
+
+    public function deleteContact($id): void
+    {
+        Contact::destroy($id);
+    }
+
+    public function changeStatus($id, $status): void
     {
         $contact = $this->contactRepository->getContactById($id);
 
         $contact->update([
-            'alias' => $contact->alias,
+            'status'  => $status['status']
         ]);
-
-        $contact->contactInfo()->update([
-            'first_name'    => $contact['first_name'],
-            'last_name'     => $contact['last_name'],
-            'address'       => $contact['address'],
-            'phone_number'  => $contact['phone_number'],
-            'organization'  => $contact['organization'],
-            'messenger'     => $contact['messenger'],
-        ]);
-
-        return $contact;
     }
 
-    public function deleteContact($id)
+    public function getContactStatus($contactId)
     {
-        Contact::destroy($id);
+        $contact = $this->contactRepository->getContactById($contactId);
+        $contactStatus = $contact['status'];
+
+        return $contactStatus;
     }
 
     public function getContactRole($contactId)

@@ -34,6 +34,9 @@ export class RolesItemComponent {
   showForm: boolean = false;
   newUser: string = '';
   userData: FormGroup;
+  // isActive: boolean = false;
+
+  value: any;
 
 
 
@@ -72,6 +75,7 @@ export class RolesItemComponent {
       this.userService.getContactsByRole(id).subscribe(
         (res: any) => {
           this.users = res.contacts;
+          console.log(this.users)
         },
         (error: any) => {
           console.error('Error loading contacts:', error);
@@ -82,7 +86,8 @@ export class RolesItemComponent {
         (res: any) => {
           this.role = res.roles[id-1].name;
           this.roleId = res.roles[id-1].id;
-          this.userData.get('roleId')?.setValue(this.roleId);          
+          this.userData.get('roleId')?.setValue(this.roleId);
+          // console.log(this.users)
         },
         (error: any) => {
           console.error('Error loading roles:', error);
@@ -104,6 +109,11 @@ export class RolesItemComponent {
     } else {
       console.log("invalid user data");
     } 
+  }
+
+  changeAccess(id:string, status:string) {
+    this.userService.changeAccessById(id, status)
+    console.log(id)
   }
 
   showAddForm() {

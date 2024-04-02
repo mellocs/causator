@@ -23,10 +23,9 @@ class EventService
     public function createEvent($eventData) : Event
     {
         // also create process
-        $contact = $this->contactRepository->getContactByAlias($eventData['contactName']);
 
         $event = Event::create([
-            'contact_id'    => $contact['id'],
+            'contact_id'    => $eventData['contactId'],
             'type'          => $eventData['type'],
             'source'        => $eventData['source'],
             'content'       => $eventData['content']

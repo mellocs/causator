@@ -30,6 +30,7 @@ class EventController extends Controller
             'type'          => 'string',
             'source'        => 'string',
             'content'       => 'string',
+            'contactId'     => 'int'
         ]);
 
         $event = $this->eventService->createEvent($eventData);

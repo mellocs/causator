@@ -28,6 +28,7 @@ class ContactFactory extends Factory
         return [
             'alias' => fake()->unique()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'status' => 'active',
             'password' => static::$password ??= Hash::make('test'),
             'remember_token' => Str::random(10),
         ];
