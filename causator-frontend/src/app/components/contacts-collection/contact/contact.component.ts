@@ -46,14 +46,14 @@ export class ContactComponent{
     this.getContactById()
 
     this.updateData = new FormGroup({
-      alias: new FormControl('',   [Validators.required]),
-      first_name: new FormControl('', [Validators.required]),
-      last_name: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required]),
-      phone_number: new FormControl('', [Validators.required]),
-      organization: new FormControl('', [Validators.required]),
-      messenger: new FormControl('', [Validators.required]),
-      roleId: new FormControl('', [Validators.required]),
+      alias: new FormControl(''),
+      first_name: new FormControl(''),
+      last_name: new FormControl(''),
+      address: new FormControl(''),
+      phone_number: new FormControl(''),
+      organization: new FormControl(''),
+      messenger: new FormControl(''),
+      roleId: new FormControl(''),
     });
   }
 
@@ -68,10 +68,12 @@ export class ContactComponent{
           
           this.user = res.contact;
           this.userInfo = res.contact.contact_info[0];
+          
 
           this.updateData.patchValue({
             alias: this.user.alias,
             email:this.user.email,
+            // roleId: '6',
           });
           if(this.userInfo) {
             this.updateData.patchValue({
@@ -81,7 +83,7 @@ export class ContactComponent{
               phone_number: this.userInfo.phone_number,
               organization: this.userInfo.organization,
               messenger: this.userInfo.messenger,
-              roleId: '6',
+              // roleId: 3,
             });
           }
 

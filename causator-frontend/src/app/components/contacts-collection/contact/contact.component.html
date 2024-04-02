@@ -222,12 +222,12 @@
                     </div>
                     <div>
                         <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Role</label>
-                        <select formControlName="roleId" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 ">
-                            <option value="4">Administrator</option>
-                            <option value="1">Contractor</option>
-                            <option value="2">Executor</option>
-                            <option value="3">Dispatcher</option>
-                            <option value="6">User</option>
+                        <select formControlName="roleId" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+                            <option value="4" [selected]="user.roleId === 4">Administrator</option>
+                            <option value="1" [selected]="user.roleId === 1">Contractor</option>
+                            <option value="2" [selected]="user.roleId === 2">Executor</option>
+                            <option value="3" [selected]="user.roleId === 3">Dispatcher</option>
+                            <option value="6" [selected]="user.roleId === 6">User</option>
                         </select>
                     </div>
                     <div>
