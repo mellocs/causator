@@ -152,8 +152,9 @@ export class UserService {
     //     )
     // }
 
-    changeAccessById(id:string) {
-        return this.http.put(`${API_URL}/api/contacts/${id}/status`, id)
+    changeAccessById(id:string, status:string) {
+        const newStatus = status === 'active' ? 'not active' : 'active';
+        return this.http.put(`${API_URL}/api/contacts/${id}/status`, {id, status: newStatus})
         .pipe(
             catchError(err => {
                 throw new Error(err.message),
@@ -161,6 +162,7 @@ export class UserService {
             })
         )
         .subscribe(res => {
+            console.log(res)
             this.toastr.success('Change status!', 'Success!');
             
         });
