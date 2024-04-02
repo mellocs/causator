@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/contacts/delete/{id}', [ContactController::class, 'deleteContact']);
     Route::put('/contacts/{id}/update', [ContactController::class, 'edit']);
     Route::put('/contacts/{id}/status', [ContactController::class, 'changeStatus']);
+    Route::get('/contacts/{id}/status/check', [ContactController::class, 'getContactStatus']);
 
     // roles routes
     Route::get('/roles', [RoleController::class, 'getAllRoles']);

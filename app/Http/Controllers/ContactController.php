@@ -55,12 +55,12 @@ class ContactController extends Controller
                 'string',
                 Rule::unique('contacts')->ignore($id),
             ],
-            'first_name'    => 'string',
-            'last_name'     => 'string',
-            'address'       => 'string',
-            'phone_number'  => 'int',
-            'organization'  => 'string',
-            'messenger'     => 'string',
+            'first_name'    => 'nullable|string',
+            'last_name'     => 'nullable|string',
+            'address'       => 'nullable|string',
+            'phone_number'  => 'nullable|string',
+            'organization'  => 'nullable|string',
+            'messenger'     => 'nullable|string',
             'roleId'        => 'int'
         ]);
 
@@ -126,6 +126,15 @@ class ContactController extends Controller
 
         return response()->json([
             'message' => "Status successful changed"
+        ]);
+    }
+
+    public function getContactStatus(int $contactId)
+    {
+        $status = $this->contactService->getContactStatus($contactId);
+
+        return response()->json([
+            'status' => $status
         ]);
     }
 }

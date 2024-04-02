@@ -18,7 +18,8 @@ class ContactService
 
     public function createContact(array $contact) : Contact
     {
-        if (!isset($contact['role_id'])) {
+
+        if (!isset($contact['roleId'])) {
             $contact['roleId'] = 1;
         }
 
@@ -70,19 +71,32 @@ class ContactService
                 'alias'  => $newContact['alias']
             ]);
         }
+        if (ContactInfo::where('contact_id', $id)->first()) {
+            $contact->contactInfo()->update([
+                'first_name'    => $newContact['first_name'] ?? null,
+                'last_name'     => $newContact['last_name'] ?? null,
+                'address'       => $newContact['address'] ?? null,
+                'phone_number'  => $newContact['phone_number'] ?? null,
+                'organization'  => $newContact['organization'] ?? null,
+                'messenger'     => $newContact['messenger'] ?? null,
+            ]);
+        } else {
+            $contact->contactInfo()->create([
+                'first_name'    => $newContact['first_name'] ?? null,
+                'last_name'     => $newContact['last_name'] ?? null,
+                'address'       => $newContact['address'] ?? null,
+                'phone_number'  => $newContact['phone_number'] ?? null,
+                'organization'  => $newContact['organization'] ?? null,
+                'messenger'     => $newContact['messenger'] ?? null,
+            ]);
+        }
 
-        $contact->contactInfo()->update([
-            'first_name'    => $newContact['first_name'],
-            'last_name'     => $newContact['last_name'],
-            'address'       => $newContact['address'],
-            'phone_number'  => $newContact['phone_number'],
-            'organization'  => $newContact['organization'],
-            'messenger'     => $newContact['messenger'],
-        ]);
 
         $contact->roles()->sync([$newContact['roleId']]);
 
-        return $contact;
+        $updatedContact = $this->contactRepository->getContactById($id);
+
+        return $updatedContact;
     }
 
     public function deleteContact($id): void
@@ -97,5 +111,13 @@ class ContactService
         $contact->update([
             'status'  => $status['status']
         ]);
+    }
+
+    public function getContactStatus($contactId)
+    {
+        $contact = $this->contactRepository->getContactById($contactId);
+        $contactStatus = $contact['status'];
+
+        return $contactStatus;
     }
 }
