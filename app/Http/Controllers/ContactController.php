@@ -68,9 +68,11 @@ class ContactController extends Controller
     public function show($id)
     {
         $contact = $this->contactService->getContactById($id);
+        $role = $this->contactService->getContactRole($id);
 
         return response()->json([
-            'contact' => $contact
+            'contact' => $contact,
+            'role' => $role
         ], 201);
     }
 

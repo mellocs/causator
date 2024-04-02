@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Contact;
 use App\Models\ContactInfo;
+use App\Models\Role;
 use App\Repositories\ContactRepository;
 use Illuminate\Support\Facades\Hash;
 
@@ -79,5 +80,14 @@ class ContactService
     public function deleteContact($id)
     {
         Contact::destroy($id);
+    }
+
+    public function getContactRole($contactId)
+    {
+        $contact = $this->contactRepository->getContactById($contactId);
+
+        return Role::whereHas('contacts', function ($query) use ($contactId) {
+        $query->where('contact_id', $contactId);
+        })->get();
     }
 }
