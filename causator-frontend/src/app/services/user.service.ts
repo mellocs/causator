@@ -142,14 +142,28 @@ export class UserService {
         )
     }
 
-    changeAccessById(id:string): Observable<any[]> {
-        return this.http.get(`${API_URL}/api/${id}/status`)
+    // changeAccessById(id:string): Observable<any[]> {
+    //     return this.http.get(`${API_URL}/api/${id}/status`)
+    //     .pipe(
+    //         catchError(err => {
+    //             throw new Error(err.message) 
+    //         }),
+    //         tap((res: any) => {console.log(res)}),
+    //     )
+    // }
+
+    changeAccessById(id:string) {
+        return this.http.put(`${API_URL}/api/contacts/${id}/status`, id)
         .pipe(
             catchError(err => {
-                throw new Error(err.message) 
-            }),
-            tap((res: any) => {console.log(res)}),
+                throw new Error(err.message),
+                this.toastr.error("Something wrong!", 'Error')
+            })
         )
+        .subscribe(res => {
+            this.toastr.success('Change status!', 'Success!');
+            
+        });
     }
 
 }

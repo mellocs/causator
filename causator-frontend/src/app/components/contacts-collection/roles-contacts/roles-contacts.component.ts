@@ -110,7 +110,6 @@ export class RolesItemComponent {
   }
 
   changeAccess(id:any) {
-    console.log(111)
     this.userService.changeAccessById(id)
     console.log(id)
   }
