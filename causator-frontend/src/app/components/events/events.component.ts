@@ -72,10 +72,12 @@ export class EventsComponent implements OnInit {
   addEvent(form: FormGroupDirective): void {
     if (this.eventData) {
       this.eventsService.addNewEvent(this.eventData.value);
-      form.reset({
-        source: '1',
-        type: '1'
+      form.reset();
+      this.eventData.patchValue({
+        type: this.id,
+        source:this.id,
       });
+      console.log(this)
     } else {
       console.log('invalid events data');
     }
