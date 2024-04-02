@@ -77,7 +77,23 @@ export class UserService {
 
 
     updateContactsById(id:string, updateData: IContactInfo) {
-        return this.http.post(`${API_URL}/api/contacts/${id}/update`, updateData)
+        return this.http.put(`${API_URL}/api/contacts/${id}/update`, updateData)
+        .pipe(
+            catchError(err => {
+                throw new Error(err.message),
+                console.log(updateData),
+                this.toastr.error("Something wrong!", 'Error')
+            })
+        )
+        .subscribe(res => {
+            this.toastr.success('Account updated!', 'Success!');
+        });
+    }
+
+
+
+    deleteContactsById(id:string) {
+        return this.http.get(`${API_URL}/api/contacts/delete/${id}`)
         .pipe(
             catchError(err => {
                 throw new Error(err.message),
@@ -85,7 +101,8 @@ export class UserService {
             })
         )
         .subscribe(res => {
-            this.toastr.success('Account updated!', 'Success!');
+            this.toastr.success('Account delete!', 'Success!');
+            this.router.navigate(['/home/contacts/roles']);
         });
     }
 
@@ -123,6 +140,30 @@ export class UserService {
             }),
             tap((res: any) => this.currentContact),
         )
+    }
+
+    // changeAccessById(id:string): Observable<any[]> {
+    //     return this.http.get(`${API_URL}/api/${id}/status`)
+    //     .pipe(
+    //         catchError(err => {
+    //             throw new Error(err.message) 
+    //         }),
+    //         tap((res: any) => {console.log(res)}),
+    //     )
+    // }
+
+    changeAccessById(id:string) {
+        return this.http.put(`${API_URL}/api/contacts/${id}/status`, id)
+        .pipe(
+            catchError(err => {
+                throw new Error(err.message),
+                this.toastr.error("Something wrong!", 'Error')
+            })
+        )
+        .subscribe(res => {
+            this.toastr.success('Change status!', 'Success!');
+            
+        });
     }
 
 }

@@ -1,7 +1,7 @@
 <div class="sm:ml-72 fixed bg-white overflow-x-hidden w-screen z-20 rounded border-b-2">
     <section class="">
         <div>
-            <div class=" relative sm:rounded-lg overflow-hidden font-nunito">
+            <div class="flex justify-between flex-auto sm:rounded-lg overflow-hidden font-nunito">
                 <div class="relative flex" data-twe-input-wrapper-init data-twe-input-group-ref>
                     <button
                     class="relative z-[2] -ms-0.5 flex items-center rounded-e bg-primary px-4  text-xs font-medium uppercase leading-normal text-gray-400 shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2"
@@ -15,22 +15,21 @@
                     </span>
                 </button>
                     <input type="search"
-                        class="peer block min-h-[auto] text-slate-400 w-9/12 rounded border-0 bg-transparent px-3 py-[0.75rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none   [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+                        class="peer block min-h-[auto] text-slate-400 w-1/2 rounded border-0 bg-transparent px-3 py-[0.75rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none   [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
                         placeholder="Search" aria-label="Search" id="search-focus" aria-describedby="basic-addon4" />
                     <label for="search-focus"
                         class="pointer-events-none absolute left-16 top-2 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary">Search...
                     </label>
-                    <button
-                        class="relative z-[2] -ms-0.5 flex items-center rounded-e bg-primary px-5  text-xs font-medium uppercase leading-normal text-gray-400 shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                </div>
+                <button
+                        class="sm:mr-72 relative z-[2] -ms-0.5 flex items-center rounded-e bg-primary px-5  text-xs font-medium uppercase leading-normal text-gray-400 shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2"
                         type="button" id="button-addon4" data-twe-ripple-init data-twe-ripple-color="light">
                         <span class="[&>svg]:h-6 [&>svg]:w-6">
                             <svg class="w-[23px] h-[23px] text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M12 5.365V3m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175 0 .593 0 1.292-.538 1.292H5.538C5 18 5 17.301 5 16.708c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 12 5.365ZM8.733 18c.094.852.306 1.54.944 2.112a3.48 3.48 0 0 0 4.646 0c.638-.572 1.236-1.26 1.33-2.112h-6.92Z"/>
-                              </svg>                              
+                            </svg>                              
                         </span>
                     </button>
-                </div>
-
             </div>
         </div>
 </section>  
