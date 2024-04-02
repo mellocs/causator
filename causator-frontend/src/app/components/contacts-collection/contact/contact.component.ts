@@ -80,6 +80,17 @@ export class ContactComponent{
             // messenger: this.userInfo.messenger,
             // roleId: '6',
           });
+          if(this.userInfo) {
+            this.updateData.patchValue({
+              first_name: this.userInfo.first_name,
+              last_name: this.userInfo.last_name,
+              address: this.userInfo.address,
+              phone_number: this.userInfo.phone_number,
+              organization: this.userInfo.organization,
+              messenger: this.userInfo.messenger,
+              roleId: '6',
+            });
+          }
 
         },
         (error: any) => {
