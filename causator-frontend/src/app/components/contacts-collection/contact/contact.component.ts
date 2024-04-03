@@ -31,6 +31,7 @@ export class ContactComponent{
 
   user: any;
   userInfo: any;
+  role: any;
   updateData: FormGroup;
   UserId!: Observable<UserService[]>;
   public openForm:boolean = false;
@@ -67,13 +68,14 @@ export class ContactComponent{
           console.log(res);
           
           this.user = res.contact;
+          this.role = res.role[0].id
           this.userInfo = res.contact.contact_info[0];
           
 
           this.updateData.patchValue({
             alias: this.user.alias,
             email:this.user.email,
-            // roleId: '6',
+            roleId: this.role,
           });
           if(this.userInfo) {
             this.updateData.patchValue({
@@ -83,7 +85,6 @@ export class ContactComponent{
               phone_number: this.userInfo.phone_number,
               organization: this.userInfo.organization,
               messenger: this.userInfo.messenger,
-              // roleId: 3,
             });
           }
 
