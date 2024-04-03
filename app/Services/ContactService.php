@@ -126,12 +126,8 @@ class ContactService
     {
         $contact = $this->contactRepository->getContactById($contactId);
 
-//        return Role::whereHas('contacts', function ($query) use ($contactId) {
-//        $query->where('contact_id', $contactId);
-//        })->get();
-
         return Role::whereHas('contacts', function ($query) use ($contactId) {
-            $query->where('contact_id', $contactId);
+        $query->where('contact_id', $contactId);
         })->get();
     }
 }
