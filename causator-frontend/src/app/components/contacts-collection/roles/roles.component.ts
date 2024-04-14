@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterLinkActive, RouterModule, Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { HomeComponent } from '../../../pages/home/home.component';
 
 @Component({
@@ -13,6 +13,8 @@ import { HomeComponent } from '../../../pages/home/home.component';
     RouterLinkActive,
     HomeComponent,
     NgFor,
+    CommonModule
+    
   ],
   templateUrl: './roles.component.html',
 })
