@@ -27,11 +27,12 @@ import { IContactInfo } from '../../../interfaces/contact-info.interface';
   ],
   templateUrl: './contact.component.html',
 })
-export class ContactComponent{
+export class ContactComponent {
 
   user: any;
   userInfo: any;
   role: any;
+  roleName: any;
   updateData: FormGroup;
   UserId!: Observable<UserService[]>;
   public openForm:boolean = false;
@@ -59,6 +60,8 @@ export class ContactComponent{
   }
 
 
+  
+
   getContactById() {
     this.route.params.subscribe(params => {
       const id = params['id'];
@@ -69,6 +72,7 @@ export class ContactComponent{
           
           this.user = res.contact;
           this.role = res.role[0].id
+          this.roleName = res.role[0].name
           this.userInfo = res.contact.contact_info[0];
           
 
@@ -94,6 +98,10 @@ export class ContactComponent{
         }
       );
     });
+  }
+
+  getRole() {
+    
   }
 
   deleteContactById() {
