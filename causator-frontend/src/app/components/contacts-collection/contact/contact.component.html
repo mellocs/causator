@@ -159,7 +159,7 @@
                                     }
                                 </td>
                             </tr>
-                            <tr class="bg-white">
+                            <tr class="bg-white border-b">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                     Messanger: 
                                 </th>
@@ -167,6 +167,22 @@
                                     @if(userInfo?.messenger != undefined) {
                                         {{userInfo.messenger}}
                                     }
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    Role: 
+                                </th>
+                                <td class="px-6 py-4">
+                                    User
+                                </td>
+                            </tr>
+                            <tr class="bg-white">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    Group: 
+                                </th>
+                                <td class="px-6 py-4">
+                                    Worker
                                 </td>
                             </tr>
                         </tbody>
@@ -181,7 +197,7 @@
 
 @if (openForm) {
 <!-- Main modal -->
-<div id="updateProductModal" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden absolute top-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full bg-gray-800 bg-opacity-75">
+<div id="updateContactModal" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden absolute top-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full bg-gray-800 bg-opacity-75">
     <div class="relative p-4 w-full top-0 left-1/3  max-w-2xl h-full md:h-auto">
         <!-- Modal content -->
         <div class="relative p-4 bg-white rounded-lg shadow">

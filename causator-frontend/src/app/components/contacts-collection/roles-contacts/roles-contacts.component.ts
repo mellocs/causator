@@ -120,7 +120,7 @@ export class RolesItemComponent {
     this.showForm = !this.showForm
   }
 
-  close() {
+  closeAddForm() {
     this.showForm = !this.showForm
   }
 

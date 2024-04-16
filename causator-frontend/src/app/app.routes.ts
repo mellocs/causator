@@ -12,6 +12,7 @@ import { RolesItemComponent } from './components/contacts-collection/roles-conta
 import { AccountComponent } from './components/account/account.component';
 import { DashboardMainComponent } from './components/dashboard-main/dashboard-main.component';
 import { GroupsComponent } from './components/contacts-collection/groups/groups.component';
+import { ObjectivesComponent } from './components/objectives/objectives.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full',},
@@ -52,6 +53,11 @@ export const routes: Routes = [
                 path: 'notifications',
                 component: NotificationsComponent,
                 title: 'Notifications'
+            },
+            {
+                path: 'objectives',
+                component: ObjectivesComponent,
+                title: 'Objectives'
             },
             {
                 path: 'events',
