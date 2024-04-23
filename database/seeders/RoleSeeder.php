@@ -13,7 +13,7 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        Role::factory()->create(['name' => 'contractor']); // контрвгент
+        Role::factory()->create(['name' => 'contractor']); // контрагент
         Role::factory()->create(['name' => 'executor']); // исполнитель
         Role::factory()->create(['name' => 'dispatcher']); // диспетчер
         Role::factory()->create(['name' => 'administrator']); // администратор

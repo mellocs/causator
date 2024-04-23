@@ -28,7 +28,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/contacts', [ContactController::class, 'index']);
     Route::get('/contacts/current', [ContactController::class, 'getCurrentContact']);
     Route::get('/contacts/{id}', [ContactController::class, 'show']);
-    Route::get('/contacts/delete/{id}', [ContactController::class, 'deleteContact']);   
+    Route::get('/contacts/delete/{id}', [ContactController::class, 'deleteContact']);
     Route::put('/contacts/{id}/update', [ContactController::class, 'edit']);
     Route::put('/contacts/{id}/status', [ContactController::class, 'changeStatus']);
     Route::get('/contacts/{id}/status/check', [ContactController::class, 'getContactStatus']);
@@ -41,7 +41,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/events', [EventController::class, 'getAllEvents']);
     Route::post('/events/create', [EventController::class, 'createEvent']);
 
-
+    // objectives routes
+    Route::get('/objectives', [EventController::class, 'getAllObjectives']);
+    Route::get('/objectives/status/{id}', [EventController::class, 'getObjectiveByStatus']);
+    Route::get('/objectives/type/{id}', [EventController::class, 'getObjectiveByType']);
+    Route::get('/objectives/{id}', [EventController::class, 'getObjectiveById']);
 
 
     // owner routes

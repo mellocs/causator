@@ -37,8 +37,7 @@ class ContactController extends Controller
         $contactData = $request->validate([
             'email' => 'required|string|unique:contacts,email',
             'alias' => 'required|string|unique:contacts,alias',
-            'roleId' => 'required|int',
-            'password' => 'required|string'
+            'roleId' => 'required|int'
         ]);
 
         $contact = $this->contactService->createContact($contactData);
