@@ -89,7 +89,7 @@ export class EventsComponent implements OnInit {
     this.showForm = !this.showForm;
   }
 
-  close() {
+  closeForm() {
     this.showForm = !this.showForm;
   }
 }
