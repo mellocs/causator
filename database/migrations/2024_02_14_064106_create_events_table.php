@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->string('alias');
             $table->unsignedBigInteger('contact_id');
             $table->string('type');
             $table->string('source');

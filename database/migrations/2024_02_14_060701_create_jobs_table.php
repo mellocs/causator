@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
+            $table->string('alias');
             $table->string('type');
             $table->unsignedBigInteger('dispatcher_id');
             $table->enum('dispatcher_status', ['test', 'test2']);
