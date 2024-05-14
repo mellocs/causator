@@ -63,15 +63,25 @@
                 }
             </li>
             <li>
-                <a routerLink="events"
-                    class="flex items-center p-2 text-indigo-200 rounded-lg  hover:bg-indigo-700  group hover:text-white">
+                <button type="button" (click)="openEvents()" class="flex items-center p-2 w-full text-base font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  " aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
                     <svg class="flex-shrink-0 w-6 h-6 text-indigo-200 transition duration-75  group-hover:text-white "
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 10h16M8 14h8m-4-7V4M7 7V4m10 3V4M5 20h14c.6 0 1-.4 1-1V7c0-.6-.4-1-1-1H5a1 1 0 0 0-1 1v12c0 .6.4 1 1 1Z" />
                     </svg>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Events</span>
-                </a>
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap">Events</span>
+                    <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+                @if(isOpenEvents) {
+                    <ul id="dropdown-pages" class=" py-2 space-y-2">
+                        <li>
+                            <a routerLink="events/types" class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Types</a>
+                        </li>
+                        <li>
+                            <a routerLink="events/sources" class="flex items-center p-1 pl-11 w-full text-sm font-normal text-indigo-200 rounded-lg transition duration-75 group hover:bg-indigo-700  ">Sources</a>
+                        </li>
+                    </ul>
+                }
             </li>
             <li>
                 <a routerLink="notifications"

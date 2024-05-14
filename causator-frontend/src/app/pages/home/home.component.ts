@@ -32,6 +32,10 @@ export class HomeComponent {
   public isOpenJobs:boolean = false;
 
   public isOpenItems:boolean = false;
+
+  public isOpenEvents:boolean = false;
+
+
   
 
   constructor (
@@ -57,6 +61,10 @@ export class HomeComponent {
 
   openContacts() {
     this.isOpenContacts = !this.isOpenContacts;
+  }
+
+  openEvents() {
+    this.isOpenEvents = !this.isOpenEvents;
   }
 
   openAccount() {

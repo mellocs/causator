@@ -58,9 +58,8 @@ export class RolesItemComponent {
       alias: new FormControl('', [
         Validators.required,
       ]),
-      password: new FormControl('', [
-        Validators.required,
-      ]),
+      firstName: new FormControl(''),
+      lastName: new FormControl(''),
     }) 
 
     this.getAll()
