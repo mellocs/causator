@@ -28,7 +28,9 @@ class ContactService
 
 
         ContactInfo::create([
-            'contact_id' => $newContact->id
+            'contact_id' => $newContact->id,
+            'firstName' => $contact['firstName'],
+            'lastName' => $contact['lastName'],
         ]);
 
         $roleId = $contact['roleId'];

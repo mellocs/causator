@@ -35,9 +35,11 @@ class ContactController extends Controller
     public function create(Request $request)
     {
         $contactData = $request->validate([
-            'email' => 'required|string|unique:contacts,email',
-            'alias' => 'required|string|unique:contacts,alias',
-            'roleId' => 'required|int'
+            'email'         => 'required|string|unique:contacts,email',
+            'alias'         => 'required|string|unique:contacts,alias',
+            'first_name'    => 'nullable|string',
+            'last_name'     => 'nullable|string',
+            'roleId'        => 'required|int'
         ]);
 
         $contact = $this->contactService->createContact($contactData);
