@@ -94,8 +94,9 @@ class ContactService
             ]);
         }
 
-
-        $contact->roles()->sync([$newContact['roleId']]);
+        foreach ($newContact['roleId'] as $role) {
+            $contact->roles()->sync([$role]);
+        }
 
         $updatedContact = $this->contactRepository->getContactById($id);
 
